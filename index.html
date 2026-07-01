@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSE 中文 · 十二篇範文</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;900&family=Noto+Sans+TC:wght@300;400;500&display=swap');
+:root{--ink:#1a1a1a;--ink-light:#555;--ink-faint:#999;--paper:#fafaf8;--paper-warm:#f7f5f1;--warm:#f4f2ee;--rule:#ddd8d0;--red:#8b1a1a;--red-l:#f5eaea;--gold:#b8860b;--r:4px;--accent:#8b1a1a;--accent-light:#f5eaea;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans TC','PingFang TC',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;line-height:1.7;}
+header{background:var(--ink);color:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3);}
+.hi{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;gap:12px;}
+.logo{font-family:'Noto Serif TC',serif;font-size:1.1rem;font-weight:900;cursor:pointer;flex-shrink:0;}
+.logo span{color:var(--red);}
+.bc{font-size:.78rem;color:#aaa;display:flex;align-items:center;gap:6px;flex:1;min-width:0;overflow:hidden;}
+.bci{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;}
+.bci:hover{color:#fff;}
+.bcs{color:#555;flex-shrink:0;}
+.ha{display:flex;gap:8px;align-items:center;flex-shrink:0;}
+.badge{background:var(--gold);color:#fff;font-size:.65rem;font-weight:600;padding:2px 7px;border-radius:99px;display:none;}
+.badge.on{display:inline-block;}
+.ibtn{background:none;border:1px solid #444;color:#ccc;border-radius:var(--r);padding:5px 10px;font-size:.75rem;cursor:pointer;font-family:inherit;}
+.ibtn:hover{border-color:#aaa;color:#fff;}
+.ibtn.on{background:var(--red);border-color:var(--red);color:#fff;}
+main{max-width:900px;margin:0 auto;padding:0 20px 60px;}
+.pg{display:none;}
+/* HOME */
+.hero{padding:44px 0 28px;border-bottom:1px solid var(--rule);margin-bottom:32px;}
+.hero h1{font-family:'Noto Serif TC',serif;font-size:clamp(1.5rem,5vw,2.2rem);font-weight:900;line-height:1.25;margin-bottom:10px;}
+.hero h1 em{font-style:normal;color:var(--red);display:block;font-size:.55em;font-weight:300;letter-spacing:.2em;margin-bottom:4px;}
+.hero p{color:var(--ink-light);font-size:.88rem;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:14px;}
+.card{background:#fff;border:1px solid var(--rule);border-radius:var(--r);padding:18px;cursor:pointer;display:flex;flex-direction:column;gap:5px;position:relative;overflow:hidden;}
+.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--red);transform:scaleY(0);transform-origin:bottom;}
+.cn{font-size:.7rem;color:var(--ink-faint);font-weight:500;letter-spacing:.1em;}
+.ct{font-family:'Noto Serif TC',serif;font-size:1.1rem;font-weight:600;}
+.ca{font-size:.8rem;color:var(--ink-light);}
+.cd{font-size:.72rem;color:var(--ink-faint);margin-top:2px;}
+.dy-tag{font-size:.62rem;font-weight:600;padding:1px 6px;border-radius:99px;letter-spacing:.05em;}
+.card-progress-wrap{height:3px;background:var(--rule);border-radius:99px;margin-top:10px;overflow:hidden;}
+.card-progress-bar{height:100%;background:var(--red);border-radius:99px;transition:width .4s cubic-bezier(.22,1,.36,1);}
+.card-progress-label{font-size:.68rem;color:var(--ink-faint);margin-top:5px;}
+.tx-progress-wrap{height:3px;background:var(--rule);border-radius:99px;overflow:hidden;}
+.tx-progress-bar{height:100%;background:var(--red);border-radius:99px;width:0;transition:width .5s cubic-bezier(.22,1,.36,1);}
+.tx-progress-label{font-size:.68rem;color:var(--ink-faint);margin-top:5px;}
+.home-stats{display:flex;align-items:center;gap:8px;margin-top:14px;flex-wrap:wrap;}
+.stat-item{font-size:.78rem;color:var(--ink-light);}
+.stat-div{color:var(--rule);font-size:.78rem;}
+/* TEXT PAGE */
+.tph{padding:32px 0 24px;border-bottom:2px solid var(--ink);margin-bottom:24px;}
+.tpm{font-size:.8rem;color:var(--ink-faint);letter-spacing:.12em;margin-bottom:6px;}
+.tpt{font-family:'Noto Serif TC',serif;font-size:clamp(1.4rem,4vw,2rem);font-weight:900;margin-bottom:4px;}
+.tpa{font-size:.88rem;color:var(--ink-light);}
+.slist{display:flex;flex-direction:column;gap:10px;}
+.se{background:#fff;border:1px solid var(--rule);border-radius:var(--r);cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:16px 20px;gap:14px;}
+.sel{display:flex;align-items:center;gap:14px;}
+.sic{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;background:var(--warm);flex-shrink:0;}
+.slb{font-family:'Noto Serif TC',serif;font-size:.95rem;font-weight:600;}
+.ssb{font-size:.73rem;color:var(--ink-faint);margin-top:1px;}
+.sar{color:var(--ink-faint);font-size:.9rem;}
+.se.filled .sic{background:var(--red-l);}
+.se.filled .slb{color:var(--red);}
+/* CONTENT PAGE */
+.cph{padding:24px 0 18px;border-bottom:1px solid var(--rule);margin-bottom:20px;display:flex;align-items:flex-start;justify-content:space-between;gap:14px;}
+.cpt{font-family:'Noto Serif TC',serif;font-size:1.15rem;font-weight:600;}
+.cps{font-size:.78rem;color:var(--ink-faint);margin-top:3px;}
+.ebtn{background:var(--ink);color:#fff;border:none;border-radius:var(--r);padding:7px 14px;font-size:.78rem;cursor:pointer;font-family:inherit;white-space:nowrap;flex-shrink:0;}
+.sbtn{background:var(--red);color:#fff;border:none;border-radius:var(--r);padding:7px 14px;font-size:.78rem;cursor:pointer;font-family:inherit;white-space:nowrap;flex-shrink:0;}
+.disp{font-size:.95rem;line-height:2.1;color:var(--ink);white-space:pre-wrap;font-family:'Noto Serif TC',serif;}
+.empty{color:var(--ink-faint);font-style:italic;font-size:.86rem;padding:28px;text-align:center;border:1px dashed var(--rule);border-radius:var(--r);}
+.editor{width:100%;min-height:260px;border:1px solid #bbb;border-radius:var(--r);padding:14px;font-family:'Noto Sans TC',sans-serif;font-size:.9rem;line-height:1.9;color:var(--ink);background:#fff;resize:vertical;outline:none;}
+.editor:focus{border-color:var(--red);}
+.hint{font-size:.73rem;color:var(--ink-faint);margin-top:7px;}
+/* VOCAB */
+.abtn{background:var(--ink);color:#fff;border:none;border-radius:var(--r);padding:7px 12px;font-size:.78rem;cursor:pointer;font-family:inherit;white-space:nowrap;}
+.abtn:hover{background:var(--red);}
+.dbtn{background:none;border:1px solid #ddd;color:var(--ink-faint);border-radius:var(--r);padding:3px 7px;font-size:.73rem;cursor:pointer;}
+.dbtn:hover{border-color:var(--red);color:var(--red);}
+.ch{display:none;}
+.vtabs{display:flex;gap:0;margin-bottom:24px;border-bottom:2px solid var(--rule);}
+.vtab{background:none;border:none;color:var(--ink-faint);padding:8px 18px 10px;font-size:.85rem;cursor:pointer;font-family:inherit;position:relative;transition:color .2s;}
+.vtab::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:var(--red);transform:scaleX(0);transition:transform .2s;}
+.vtab.on{color:var(--ink);font-weight:500;}
+.vtab.on::after{transform:scaleX(1);}
+.scard{margin-bottom:16px;border-radius:8px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.07);}
+.scard-row{display:grid;grid-template-columns:1fr 1px 1fr;}
+.scard-left{padding:16px 18px;background:#fff;}
+.scard-div{background:var(--rule);}
+.scard-right{padding:16px 18px;background:var(--paper-warm);}
+.scard-label{font-size:.68rem;color:var(--ink-faint);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;}
+.scard-orig{font-family:'Noto Serif TC',serif;font-size:1rem;line-height:2;color:var(--ink);}
+.scard-trans{font-size:.88rem;line-height:1.85;color:var(--ink-light);}
+.scard-words{padding:10px 18px 14px;background:#f9f9f7;border-top:1px solid var(--rule);display:flex;gap:0;flex-wrap:wrap;}
+.sword{font-size:.8rem;color:var(--ink-light);padding:3px 12px 3px 0;border-right:1px solid var(--rule);margin-right:12px;margin-bottom:4px;}
+.sword:last-child{border-right:none;}
+
+.sadd{background:var(--paper-warm);border-radius:8px;padding:16px 18px;margin-bottom:20px;border:1px dashed var(--rule);}
+.sadd-title{font-size:.78rem;color:var(--ink-light);margin-bottom:12px;font-weight:500;}
+.sadd-row{display:flex;gap:8px;margin-bottom:8px;}
+.sadd-inp{flex:1;border:1px solid #ccc;border-radius:var(--r);padding:8px 12px;font-family:inherit;font-size:.88rem;outline:none;background:#fff;}
+.sadd-inp:focus{border-color:var(--red);}
+.slist-edit{display:flex;flex-direction:column;gap:8px;}
+.sedit-row{display:flex;gap:8px;align-items:flex-start;background:#fff;border:1px solid var(--rule);border-radius:var(--r);padding:10px 14px;}
+.sedit-row .st{flex:1;font-size:.82rem;}
+@media(max-width:600px){.scard-row{grid-template-columns:1fr;}.scard-div{height:1px;width:100%;}.sword{border-right:none;padding-right:8px;margin-right:8px;}}
+.sec-card{background:#fff;border:1px solid var(--rule);border-radius:8px;padding:16px 18px;margin-bottom:14px;}
+.sec-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.sec-card-title{font-family:'Noto Serif TC',serif;font-size:.9rem;font-weight:600;color:var(--ink);}
+.sec-field{margin-bottom:10px;}
+.sec-label{font-size:.7rem;color:var(--ink-faint);letter-spacing:.08em;margin-bottom:4px;}
+.sec-val{font-size:.88rem;line-height:1.8;color:var(--ink-light);}
+.sec-tag{display:inline-block;font-size:.72rem;padding:2px 8px;border-radius:99px;background:var(--accent-light);color:var(--accent);margin-right:4px;margin-bottom:4px;}
+.sec-tag.green{background:#e8f5e9;color:#2e7d32;}
+.sec-tag.blue{background:#e3f2fd;color:#1565c0;}
+.sec-tag.amber{background:#fff8e1;color:#e65100;}
+.add-card{border:1px dashed var(--rule);border-radius:8px;padding:14px 16px;margin-bottom:16px;background:var(--paper-warm);}
+.add-card-title{font-size:.78rem;font-weight:500;color:var(--ink-light);margin-bottom:10px;}
+.field-row{display:flex;flex-direction:column;gap:4px;margin-bottom:10px;}
+.field-label{font-size:.72rem;color:var(--ink-faint);}
+.field-inp{border:1px solid #ccc;border-radius:var(--r);padding:7px 11px;font-family:inherit;font-size:.86rem;outline:none;width:100%;background:#fff;}
+.field-inp:focus{border-color:var(--red);}
+.field-inp.ta{min-height:70px;resize:vertical;}
+.sec-cards-list{display:flex;flex-direction:column;gap:10px;}
+.sec-card-draggable{cursor:grab;transition:opacity .15s,box-shadow .15s;}
+.sec-card-draggable:active{cursor:grabbing;}
+.sec-card-draggable.dragging{opacity:.4;}
+.sec-card-draggable.drag-over{box-shadow:0 0 0 2px var(--red);background:var(--red-l);}
+.drag-handle{font-size:1rem;color:var(--ink-faint);cursor:grab;user-select:none;letter-spacing:-2px;}
+
+/* ── GLOBAL EASING ── */
+:root{--ease-out:cubic-bezier(.22,1,.36,1);--ease-in-out:cubic-bezier(.4,0,.2,1);--ease-bounce:cubic-bezier(.34,1.56,.64,1);}
+
+/* ── PAGE TRANSITIONS ── */
+.pg{display:none;}
+.pg.on{display:block;animation:pgIn .35s var(--ease-out) both;}
+@keyframes pgIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+
+/* ── CARDS ── */
+@keyframes cardIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.card{animation:cardIn .5s var(--ease-out) both;transition:border-color .25s var(--ease-out),box-shadow .25s var(--ease-out),transform .25s var(--ease-out);}
+.card::before{transition:transform .3s var(--ease-out);}
+.card:hover{border-color:#bbb;box-shadow:0 6px 24px rgba(0,0,0,.09);transform:translateY(-3px);}
+.card:hover::before{transform:scaleY(1);}
+
+/* ── SECTION LIST ── */
+.se{transition:border-color .2s var(--ease-out),box-shadow .2s var(--ease-out),background .2s;}
+.se:hover{border-color:#bbb;box-shadow:0 2px 8px rgba(0,0,0,.07);}
+.sar{transition:transform .25s var(--ease-out),color .2s;}
+.se:hover .sar{transform:translateX(6px);color:var(--red);}
+
+/* ── BUTTONS ── */
+.ebtn{transition:background .2s var(--ease-out),transform .15s var(--ease-out);}
+.ebtn:hover{background:var(--red);transform:translateY(-1px);}
+.ebtn:active{transform:translateY(0);}
+.abtn{transition:background .2s var(--ease-out),transform .15s var(--ease-out);}
+.abtn:hover{background:var(--red);transform:translateY(-1px);}
+.abtn:active{transform:translateY(0);}
+.ibtn{transition:border-color .2s,color .2s,background .2s;}
+
+/* ── QUIZ ANIMATIONS ── */
+@keyframes quizSlideIn{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+@keyframes quizShake{0%,100%{transform:translateX(0);}18%{transform:translateX(-8px);}38%{transform:translateX(7px);}55%{transform:translateX(-5px);}72%{transform:translateX(4px);}88%{transform:translateX(-2px);}}
+@keyframes quizBounce{0%,100%{transform:scale(1);}28%{transform:scale(1.035);}55%{transform:scale(.975);}78%{transform:scale(1.012);}}
+@keyframes quizAnsIn{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);}}
+@keyframes quizScoreIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+
+/* ── SPLASH ── */
+@keyframes splashFadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes splashTitleIn{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+@keyframes splashSubIn{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@keyframes splashPulse{0%,100%{opacity:.3;transform:translateX(-50%) translateY(0);}50%{opacity:.65;transform:translateX(-50%) translateY(-6px);}}
+@keyframes splashShrink{
+  0%{clip-path:circle(150% at 50% 50%);opacity:1;}
+  70%{clip-path:circle(3% at 50% 50%);opacity:1;}
+  88%{clip-path:circle(.6% at 50% 50%);opacity:1;}
+  100%{clip-path:circle(0% at 50% 50%);opacity:0;}
+}
+@keyframes mainReveal{from{opacity:0;}to{opacity:1;}}
+#splash{position:fixed;inset:0;background:#fff;z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;animation:splashFadeIn 1s ease;transform-origin:center center;}
+#splash.out{animation:splashShrink 1.6s cubic-bezier(.65,0,.35,1) forwards;}
+.splash-em{font-family:'Noto Serif TC',serif;font-size:clamp(.75rem,1.8vw,.9rem);font-weight:300;color:var(--red);letter-spacing:.4em;margin-bottom:32px;animation:splashSubIn 1.1s .35s both;}
+.splash-title{font-family:'Noto Serif TC',serif;font-size:clamp(2.4rem,8vw,4.8rem);font-weight:900;color:var(--ink);line-height:1.1;animation:splashTitleIn 1.1s .5s both;letter-spacing:.06em;}
+.splash-title span{color:var(--red);}
+.splash-title-row{display:flex;flex-direction:column;align-items:center;gap:2px;}
+.splash-line{width:36px;height:1px;background:var(--rule);margin:30px auto;animation:splashSubIn 1.1s .8s both;}
+.splash-sub{font-size:clamp(.68rem,1.8vw,.82rem);color:var(--ink-faint);letter-spacing:.22em;animation:splashSubIn 1.1s .95s both;}
+.splash-hint{position:absolute;bottom:48px;left:50%;transform:translateX(-50%);font-size:.68rem;color:var(--ink-faint);letter-spacing:.2em;animation:splashPulse 2.6s 2s infinite;white-space:nowrap;}
+.main-wrap{animation:none;}
+.main-wrap.zoomed{animation:mainReveal 2.8s var(--ease-out) both;}
+.back-btn{display:none;background:none;border:none;color:#aaa;font-size:.8rem;cursor:pointer;padding:0;font-family:inherit;align-items:center;gap:4px;}
+.back-btn.show{display:flex;}
+.back-btn:hover{color:#fff;}
+/* READ TOGGLE */
+.read-toggle{font-size:.72rem;color:var(--ink-faint);cursor:pointer;padding:3px 8px;border:1px solid var(--rule);border-radius:99px;background:none;font-family:inherit;transition:all .2s;white-space:nowrap;}
+.read-toggle.done{color:#2e7d32;border-color:#2e7d32;}
+/* SAVE REMINDER */
+.save-reminder{background:#fff8e1;border:1px solid #ffe082;border-radius:var(--r);padding:8px 14px;font-size:.78rem;color:#e65100;margin-bottom:12px;display:none;}
+.save-reminder.show{display:block;}
+.compare-setup{background:var(--paper-warm);border-radius:8px;padding:18px;margin-bottom:20px;}
+.compare-setup-title{font-size:.82rem;font-weight:500;color:var(--ink-light);margin-bottom:12px;}
+.compare-sel-row{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.compare-sel{flex:1;min-width:140px;border:1px solid #ccc;border-radius:var(--r);padding:7px 10px;font-family:inherit;font-size:.85rem;outline:none;background:#fff;}
+.compare-sel:focus{border-color:var(--red);}
+.compare-check-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+.compare-check{display:flex;align-items:center;gap:5px;font-size:.82rem;color:var(--ink-light);cursor:pointer;}
+.compare-check input{cursor:pointer;}
+.compare-grid{display:grid;gap:16px;}
+.compare-grid.cols-2{grid-template-columns:1fr 1fr;}
+.compare-col{background:#fff;border:1px solid var(--rule);border-radius:8px;overflow:hidden;}
+.compare-col-header{background:var(--ink);color:#fff;padding:10px 16px;font-family:'Noto Serif TC',serif;font-size:.9rem;font-weight:600;}
+.compare-col-body{padding:14px 16px;}
+.compare-sec-title{font-size:.72rem;color:var(--ink-faint);letter-spacing:.08em;margin:12px 0 6px;text-transform:uppercase;}
+.compare-sec-title:first-child{margin-top:0;}
+.compare-sec-val{font-size:.85rem;line-height:1.8;color:var(--ink-light);}
+.compare-empty{color:var(--ink-faint);font-style:italic;font-size:.82rem;}
+/* QUIZ */
+.quiz-wrap{margin-top:8px;}
+.quiz-card{background:#fff;border:1px solid var(--rule);border-radius:10px;padding:18px 20px;margin-bottom:14px;box-shadow:0 1px 6px rgba(0,0,0,.05);animation:quizSlideIn .35s cubic-bezier(.22,1,.36,1) both;transition:box-shadow .2s,border-color .2s;}
+.quiz-card:hover{box-shadow:0 3px 14px rgba(0,0,0,.09);}
+.quiz-card.shake{animation:quizShake .42s cubic-bezier(.36,.07,.19,.97);}
+.quiz-card.bounce{animation:quizBounce .38s cubic-bezier(.22,1,.36,1);}
+.quiz-card.card-correct{border-color:#a5d6a7;background:#fafff9;}
+.quiz-card.card-wrong{border-color:#ffb3b3;background:#fff8f8;}
+.quiz-q{font-size:.92rem;color:var(--ink-faint);margin-bottom:12px;line-height:1.55;}
+.quiz-q strong{font-family:'Noto Serif TC',serif;color:var(--ink);font-size:1.05rem;}
+.quiz-inp{width:100%;border:1.5px solid #ddd;border-radius:6px;padding:9px 13px;font-family:inherit;font-size:.9rem;outline:none;margin-bottom:10px;background:#fafafa;transition:border-color .2s,background .2s,box-shadow .2s;}
+.quiz-inp:focus{border-color:var(--red);background:#fff;box-shadow:0 0 0 3px rgba(139,26,26,.08);}
+.quiz-inp:disabled{opacity:.75;cursor:default;}
+.quiz-inp.correct{border-color:#2e7d32;background:#f1f8e9;box-shadow:0 0 0 3px rgba(46,125,50,.1);}
+.quiz-inp.wrong{border-color:#c62828;background:#fff5f5;box-shadow:0 0 0 3px rgba(198,40,40,.1);}
+.quiz-confirm-btn{background:var(--ink);color:#fff;border:none;border-radius:6px;padding:7px 18px;font-size:.8rem;cursor:pointer;font-family:inherit;transition:background .18s,transform .12s;}
+.quiz-confirm-btn:hover{background:var(--red);transform:translateY(-1px);}
+.quiz-confirm-btn:active{transform:translateY(0);}
+.quiz-show-btn{background:none;color:var(--ink-faint);border:1px solid var(--rule);border-radius:6px;padding:7px 14px;font-size:.8rem;cursor:pointer;font-family:inherit;transition:border-color .18s,color .18s;}
+.quiz-show-btn:hover{border-color:#aaa;color:var(--ink);}
+.quiz-ans{font-size:.84rem;margin-top:10px;padding:8px 12px;border-radius:6px;opacity:0;pointer-events:none;}
+.quiz-ans.show{opacity:1;pointer-events:auto;animation:quizAnsIn .28s cubic-bezier(.22,1,.36,1);}
+.quiz-ans.correct{color:#1b5e20;background:#e8f5e9;border-left:3px solid #2e7d32;}
+.quiz-ans.wrong{color:#b71c1c;background:#ffebee;border-left:3px solid #c62828;}
+.quiz-score-banner{background:linear-gradient(135deg,var(--ink) 0%,#2d2d2d 100%);color:#fff;border-radius:10px;padding:22px 24px;margin-bottom:20px;animation:quizScoreIn .4s cubic-bezier(.22,1,.36,1);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.quiz-score-text{font-family:'Noto Serif TC',serif;font-size:1rem;font-weight:600;}
+.quiz-score-num{font-size:1.6rem;font-weight:900;font-family:monospace;color:var(--gold);}
+.quiz-score-sub{font-size:.75rem;color:#aaa;margin-top:2px;}
+.quiz-top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.quiz-counter{font-size:.78rem;color:var(--ink-faint);font-weight:500;}
+.quiz-score-live{font-size:.78rem;color:#2e7d32;font-weight:600;}
+.quiz-track{height:4px;background:var(--rule);border-radius:99px;margin-bottom:18px;overflow:hidden;}
+.quiz-track-fill{height:100%;background:var(--red);border-radius:99px;transition:width .4s cubic-bezier(.22,1,.36,1);}
+.quiz-review-title{font-size:.78rem;color:var(--ink-faint);letter-spacing:.08em;margin:16px 0 8px;}
+.quiz-review-list{display:flex;flex-direction:column;gap:6px;margin-bottom:4px;}
+.quiz-review-item{display:flex;align-items:baseline;gap:10px;background:#fff8f8;border:1px solid #ffd0d0;border-radius:6px;padding:8px 12px;}
+.quiz-review-word{font-family:'Noto Serif TC',serif;font-size:.95rem;font-weight:500;color:var(--ink);min-width:40px;}
+.quiz-review-meaning{font-size:.82rem;color:var(--ink-light);}
+.quiz-review-perfect{font-size:.85rem;color:#2e7d32;padding:12px 0;}
+.quiz-source{font-family:'Noto Serif TC',serif;font-size:.88rem;color:var(--ink-light);line-height:1.9;margin-bottom:12px;padding:8px 12px;background:var(--warm);border-radius:6px;border-left:3px solid var(--rule);}
+.quiz-source-word{text-decoration:underline;text-underline-offset:3px;color:var(--ink);font-weight:500;}
+.quiz-next-btn{margin-top:12px;width:100%;background:var(--ink);color:#fff;border:none;border-radius:6px;padding:9px;font-size:.82rem;cursor:pointer;font-family:inherit;transition:background .18s,transform .12s;animation:quizAnsIn .22s ease;}
+.quiz-next-btn:hover{background:var(--red);transform:translateY(-1px);}
+.quiz-next-btn:active{transform:translateY(0);}
+/* DSE ANSWER BOX */
+.dse-answer-box{margin-top:10px;border-top:1px dashed var(--rule);padding-top:10px;}
+.dse-answer-label{font-size:.7rem;color:var(--ink-faint);letter-spacing:.08em;margin-bottom:5px;}
+.dse-answer-inp{width:100%;min-height:80px;border:1px solid #ccc;border-radius:var(--r);padding:8px 12px;font-family:inherit;font-size:.85rem;line-height:1.7;outline:none;resize:vertical;background:#fff;}
+.dse-answer-inp:focus{border-color:var(--red);}
+.dse-answer-saved{font-size:.72rem;color:#2e7d32;margin-top:4px;display:none;}
+@media(max-width:600px){.compare-grid.cols-2{grid-template-columns:1fr;}.compare-sel-row{flex-direction:column;}}
+/* MODAL */
+.mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:200;align-items:center;justify-content:center;padding:20px;}
+.mo.on{display:flex;}
+.mb{background:#fff;border-radius:8px;padding:28px 24px;max-width:320px;width:100%;box-shadow:0 8px 32px rgba(0,0,0,.2);text-align:center;}
+.mb h3{font-family:'Noto Serif TC',serif;font-size:1.05rem;margin-bottom:6px;}
+.mb p{font-size:.83rem;color:var(--ink-light);margin-bottom:16px;}
+.mb input{width:100%;border:1px solid #ccc;border-radius:var(--r);padding:9px 12px;font-size:1rem;text-align:center;letter-spacing:.2em;font-family:monospace;outline:none;margin-bottom:14px;}
+.mb input:focus{border-color:var(--red);}
+.mbs{display:flex;gap:9px;}
+.mbtn{flex:1;padding:9px;border-radius:var(--r);border:1px solid #ddd;font-size:.83rem;cursor:pointer;font-family:inherit;}
+.mbtn.p{background:var(--ink);color:#fff;border-color:var(--ink);}
+.mbtn.p:hover{background:var(--red);}
+.merr{color:var(--red);font-size:.78rem;margin-top:-6px;margin-bottom:10px;display:none;}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:#fff;padding:9px 20px;border-radius:99px;font-size:.8rem;z-index:300;transition:transform .35s cubic-bezier(.34,1.56,.64,1);pointer-events:none;white-space:nowrap;}
+.toast.on{transform:translateX(-50%) translateY(0);}
+.toast.ok{background:#1a5c2a;}.toast.er{background:var(--red);}
+@media(max-width:600px){
+  .hi{padding:11px 14px;}.logo{font-size:.95rem;}main{padding:0 14px 60px;}
+  .grid{grid-template-columns:1fr;}.hero{padding:24px 0 18px;}
+  .se{padding:13px 14px;}.cph{flex-direction:column;gap:10px;}
+  .ebtn,.sbtn{width:100%;text-align:center;}
+}
+</style>
+</head>
+<body>
+<div id="splash" onclick="enterSite()">
+  <div class="splash-em">DSE 中國語文</div>
+  <div class="splash-title-row">
+    <div class="splash-title">十二篇</div>
+    <div class="splash-title"><span>範文</span></div>
+  </div>
+  <div class="splash-line"></div>
+  <div class="splash-sub">原文 · 語譯 · 分析 · 測驗</div>
+  <div class="splash-hint">撳任意位置進入</div>
+</div>
+<div class="main-wrap" id="mainWrap">
+<header>
+  <div class="hi">
+    <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
+      <button class="back-btn" id="backBtn" onclick="goBack()">‹ 返回</button>
+      <div class="logo" onclick="goHome()">DSE <span>中文</span></div>
+    </div>
+    <nav class="bc" id="bc"></nav>
+    <div class="ha">
+      <span class="badge" id="badge">管理員</span>
+      <button class="ibtn" onclick="goCompare()" title="篇章比較">⚖️</button>
+      <button class="ibtn" id="lbtn" onclick="toggleAdmin()">🔒 登入</button>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="pg" id="pg-compare">
+    <div class="hero" style="padding-bottom:16px;">
+      <h1><em>篇章比較</em>選擇篇章及項目</h1>
+    </div>
+    <div id="compareSetup"></div>
+    <div id="compareResult"></div>
+  </div>
+  <div class="pg on" id="pg-home">
+    <div class="hero">
+      <h1><em>DSE 中國語文</em>十二篇範文</h1>
+      <p>選擇範文，瀏覽原文、字詞語譯、文章主旨、段落分析等內容。</p>
+      <div id="homeStats" class="home-stats"></div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div class="pg" id="pg-text">
+    <div class="tph">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <div class="tpm" id="tmeta"></div>
+        <span id="tdy-tag" class="dy-tag"></span>
+      </div>
+      <div class="tpt" id="ttitle"></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px;gap:12px;">
+        <div class="tpa" id="tauthor"></div>
+        <button id="txReadBtn" class="read-toggle" onclick="toggleReadTx()"></button>
+      </div>
+      <div class="tx-progress-wrap" style="margin-top:14px;">
+        <div class="tx-progress-bar" id="txProgressBar"></div>
+      </div>
+      <div class="tx-progress-label" id="txProgressLabel"></div>
+    </div>
+    <div class="slist" id="slist"></div>
+  </div>
+  <div class="pg" id="pg-content">
+    <div class="save-reminder" id="saveReminder">⚠️ 你有未儲存的內容，記得撳「儲存」！</div>
+    <div class="cph">
+      <div><div class="cpt" id="ctitle"></div><div class="cps" id="csub"></div></div>
+      <div id="cact"></div>
+    </div>
+    <div id="cbody"></div>
+  </div>
+</main>
+</div><!-- /main-wrap -->
+<div class="mo" id="modal">
+  <div class="mb">
+    <h3>管理員登入</h3>
+    <p>輸入密碼以解鎖編輯功能</p>
+    <input type="password" id="pw" placeholder="••••••" maxlength="20" onkeydown="if(event.key==='Enter')checkPw()">
+    <div class="merr" id="merr">密碼錯誤，請重試</div>
+    <div class="mbs">
+      <button class="mbtn" onclick="closeMo()">取消</button>
+      <button class="mbtn p" onclick="checkPw()">登入</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const PW='201092';
+const PRESET_VERSION=1; // 每次修改 PRESET 現有內容後加 1
+const SEC=[
+  {key:'original', icon:'📜', label:'原文',        sub:'篇章原文'},
+  {key:'theme',    icon:'💡', label:'文章主旨',    sub:'篇章主題及中心思想',   isTheme:true},
+  {key:'para',     icon:'📝', label:'段落分析',    sub:'段落大意及結構分析',   isPara:true},
+  {key:'vocab',    icon:'🃏', label:'字詞語譯',    sub:'句子語譯 + 字詞卡牌',  isV:true},
+  {key:'argument', icon:'⚖️',  label:'論證手法',    sub:'論點、論據與論證方式', isArg:true},
+  {key:'rhetoric', icon:'✒️',  label:'修辭手法',    sub:'各種修辭技巧分析',     isRhet:true},
+  {key:'dse',      icon:'📋', label:'DSE歷屆題目', sub:'歷年公開試相關考題',   isDse:true},
+];
+const TX=[
+  {id:1, title:'論仁、論孝、論君子',   author:'《論語》',        dy:'春秋'},
+  {id:2, title:'魚我所欲也',            author:'《孟子·告子上》', dy:'戰國'},
+  {id:3, title:'逍遙遊（節錄）',        author:'《莊子·內篇》',   dy:'戰國'},
+  {id:4, title:'勸學（節錄）',          author:'荀子',            dy:'戰國'},
+  {id:5, title:'廉頗藺相如列傳（節錄）',author:'司馬遷',          dy:'西漢'},
+  {id:6, title:'出師表',                author:'諸葛亮',          dy:'三國'},
+  {id:7, title:'師說',                  author:'韓愈',            dy:'唐'},
+  {id:8, title:'始得西山宴遊記',        author:'柳宗元',          dy:'唐'},
+  {id:9, title:'岳陽樓記',              author:'范仲淹',          dy:'北宋'},
+  {id:10,title:'六國論',                author:'蘇洵',            dy:'北宋'},
+  {id:11,title:'山居秋暝',              author:'王維',            dy:'唐'},
+  {id:12,title:'月下獨酌',              author:'李白',            dy:'唐'},
+  {id:13,title:'登樓',                  author:'杜甫',            dy:'唐'},
+  {id:14,title:'念奴嬌·赤壁懷古',     author:'蘇軾',            dy:'北宋'},
+  {id:15,title:'聲聲慢',                author:'李清照',          dy:'南宋'},
+  {id:16,title:'青玉案·元夕',         author:'辛棄疾',          dy:'南宋'},
+];
+
+// Preset data for 魚我所欲也
+const PRESET={
+  1:{
+    original:`【論仁】
+1. 子曰：「不仁者，不可以久處約，不可以長處樂。仁者安仁，知者利仁。」（《里仁》第四）
+2. 子曰：「富與貴，是人之所欲也；不以其道得之，不處也。貧與賤，是人之所惡也；不以其道得之，不去也。君子去仁，惡乎成名？君子無終食之間違仁，造次必於是，顛沛必於是。」（《里仁》第四）
+3. 顏淵問仁。子曰：「克己復禮為仁。一日克己復禮，天下歸仁焉。為仁由己，而由人乎哉？」
+顏淵曰：「請問其目。」子曰：「非禮勿視，非禮勿聽，非禮勿言，非禮勿動。」
+顏淵曰：「回雖不敏，請事斯語矣。」（《顏淵》第十二）
+4. 子曰：「志士仁人，無求生以害仁，有殺身以成仁。」（《衞靈公》第十五）
+
+【論孝】
+5. 孟懿子問孝。子曰：「無違。」
+樊遲御，子告之曰：「孟孫問孝於我，我對曰，無違。」
+樊遲曰：「何謂也？」子曰：「生，事之以禮；死，葬之以禮，祭之以禮。」（《為政》第二）
+6. 子游問孝。子曰：「今之孝者，是謂能養。至於犬馬，皆能有養；不敬，何以別乎！」（《為政》第二）
+7. 子曰：「事父母幾諫，見志不從，又敬不違，勞而不怨。」（《里仁》第四）
+8. 子曰：「父母之年，不可不知也。一則以喜，一則以懼。」（《里仁》第四）
+
+【論君子】
+9. 子曰：「君子不重則不威；學則不固。主忠信。無友不如己者。過則勿憚改。」（《學而》第一）
+10. 子曰：「君子坦蕩蕩，小人長戚戚。」（《述而》第七）
+11. 司馬牛問君子。子曰：「君子不憂不懼。」
+曰：「不憂不懼，斯謂之君子已乎？」子曰：「內省不疚，夫何憂何懼？」（《顏淵》第十二）
+12. 子曰：「君子成人之美，不成人之惡。小人反是。」（《顏淵》第十二）
+13. 子曰：「君子恥其言而過其行。」（《憲問》第十四）
+14. 子曰：「君子義以為質，禮以行之，孫以出之，信以成之。君子哉！」（《衞靈公》第十五）
+15. 子曰：「君子病無能焉，不病人之不己知也。」（《衞靈公》第十五）
+16. 子曰：「君子求諸己，小人求諸人。」（《衞靈公》第十五）`,
+  },
+  2:{
+    original:`孟子曰：「魚，我所欲也，熊掌，亦我所欲也；二者不可得兼，舍魚而取熊掌者也。生亦我所欲也，義亦我所欲也；二者不可得兼，舍生而取義者也。生亦我所欲，所欲有甚於生者，故不為苟得也；死亦我所惡，所惡有甚於死者，故患有所不辟也。如使人之所欲莫甚於生，則凡可以得生者，何不用也？使人之所惡莫甚於死者，則凡可以辟患者，何不為也？由是則生而有不用也，由是則可以辟患而有不為也，是故所欲有甚於生者，所惡有甚於死者。非獨賢者有是心也，人皆有之，賢者能勿喪耳。
+
+一簞食，一豆羹，得之則生，弗得則死。嘑爾而與之，行道之人弗受；蹴爾而與之，乞人不屑也。萬鍾則不辯禮義而受之。萬鍾於我何加焉？為宮室之美、妻妾之奉、所識窮乏者得我與？鄉為身死而不受，今為宮室之美為之；鄉為身死而不受，今為妻妾之奉為之；鄉為身死而不受，今為所識窮乏者得我而為之，是亦不可以已乎？此之謂失其本心。」`,
+  },
+  4:{
+    original:`君子曰：學不可以已。青，取之於藍，而青於藍；冰，水為之，而寒於水。木直中繩，輮以為輪，其曲中規；雖有槁暴、不復挺者，輮使之然也。故木受繩則直，金就礪則利，君子博學而日參省乎己，則知明而行無過矣。
+
+吾嘗終日而思矣，不如須臾之所學也；吾嘗跂而望矣，不如登高之博見也。登高而招，臂非加長也，而見者遠。順風而呼，聲非加疾也，而聞者彰。假輿馬者，非利足也，而致千里；假舟楫者，非能水也，而絕江河。君子生非異也，善假於物也。
+
+積土成山，風雨興焉；積水成淵，蛟龍生焉；積善成德，而神明自得，聖心備焉。故不積跬步，無以至千里；不積小流，無以成江海。騏驥一躍，不能十步；駑馬十駕，功在不舍。鍥而舍之，朽木不折；鍥而不舍，金石可鏤。螾無爪牙之利，筋骨之強，上食埃土，下飲黃泉，用心一也。蟹六跪而二螯，非蛇蟺之穴無可寄託者，用心躁也。`,
+  },
+  5:{
+    original:`廉頗者，趙之良將也。趙惠文王十六年，廉頗為趙將伐齊，大破之，取陽晉，拜為上卿，以勇氣聞於諸侯。藺相如者，趙人也，為趙宦者令繆賢舍人。
+
+趙惠文王時，得楚和氏璧。秦昭王聞之，使人遺趙王書，願以十五城請易璧。趙王與大將軍廉頗諸大臣謀：欲予秦，秦城恐不可得，徒見欺；欲勿予，即患秦兵之來。計未定，求人可使報秦者，未得。宦者令繆賢曰：「臣舍人藺相如可使。」王問：「何以知之？」對曰：「臣嘗有罪，竊計欲亡走燕，臣舍人相如止臣，曰：『君何以知燕王？』臣語曰：『臣嘗從大王與燕王會境上，燕王私握臣手，曰：「願結友。」以此知之，故欲往。』相如謂臣曰：『夫趙彊而燕弱，而君幸於趙王，故燕王欲結於君。今君乃亡趙走燕，燕畏趙，其勢必不敢留君，而束君歸趙矣。君不如肉袒伏斧質請罪，則幸得脫矣。』臣從其計，大王亦幸赦臣。臣竊以為其人勇士，有智謀，宜可使。」於是王召見，問藺相如曰：「秦王以十五城請易寡人之璧，可予不？」相如曰：「秦彊而趙弱，不可不許。」王曰：「取吾璧，不予我城，奈何？」相如曰：「秦以城求璧而趙不許，曲在趙；趙予璧而秦不予趙城，曲在秦。均之二策，寧許以負秦曲。」王曰：「誰可使者？」相如曰：「王必無人，臣願奉璧往使。城入趙而璧留秦；城不入，臣請完璧歸趙。」趙王於是遂遣相如奉璧西入秦。
+
+秦王坐章臺見相如，相如奉璧奏秦王。秦王大喜，傳以示美人及左右，左右皆呼萬歲。相如視秦王無意償趙城，乃前曰：「璧有瑕，請指示王。」王授璧，相如因持璧卻立，倚柱，怒髮上衝冠，謂秦王曰：「大王欲得璧，使人發書至趙王，趙王悉召羣臣議，皆曰：『秦貪，負其彊，以空言求璧，償城恐不可得。』議不欲予秦璧。臣以為布衣之交尚不相欺，況大國乎！且以一璧之故逆彊秦之驩，不可。於是趙王乃齋戒五日，使臣奉璧，拜送書於庭。何者？嚴大國之威以修敬也。今臣至，大王見臣列觀，禮節甚倨；得璧，傳之美人，以戲弄臣。臣觀大王無意償趙王城邑，故臣復取璧。大王必欲急臣，臣頭今與璧俱碎於柱矣！」相如持其璧睨柱，欲以擊柱。秦王恐其破璧，乃辭謝固請，召有司案圖，指從此以往十五都予趙。相如度秦王特以詐佯為予趙城，實不可得，乃謂秦王曰：「和氏璧，天下所共傳寶也。趙王恐，不敢不獻。趙王送璧時，齋戒五日，今大王亦宜齋戒五日，設九賓於廷，臣乃敢上璧。」秦王度之，終不可彊奪，遂許齋五日，舍相如廣成傳。相如度秦王雖齋，決負約不償城，乃使其從者衣褐，懷其璧，從徑道亡，歸璧於趙。
+
+秦王齋五日後，乃設九賓禮於廷，引趙使者藺相如。相如至，謂秦王曰：「秦自繆公以來二十餘君，未嘗有堅明約束者也。臣誠恐見欺於王而負趙，故令人持璧歸，間至趙矣。且秦彊而趙弱，大王遣一介之使至趙，趙立奉璧來；今以秦之彊而先割十五都予趙，趙豈敢留璧而得罪於大王乎？臣知欺大王之罪當誅，臣請就湯鑊。唯大王與羣臣孰計議之！」秦王與羣臣相視而嘻。左右或欲引相如去，秦王因曰：「今殺相如，終不能得璧也，而絕秦趙之驩，不如因而厚遇之，使歸趙，趙王豈以一璧之故欺秦邪！」卒廷見相如，畢禮而歸之。相如既歸，趙王以為賢大夫，使不辱於諸侯，拜相如為上大夫。秦亦不以城予趙，趙亦終不予秦璧。
+
+其後秦伐趙，拔石城。明年，復攻趙，殺二萬人。秦王使使者告趙王，欲與王為好會於西河外澠池。趙王畏秦，欲毋行。廉頗、藺相如計曰：「王不行，示趙弱且怯也。」趙王遂行，相如從。廉頗送至境，與王訣曰：「王行，度道里會遇之禮畢，還，不過三十日。三十日不還，則請立太子為王，以絕秦望。」王許之，遂與秦王會澠池。秦王飲酒酣，曰：「寡人竊聞趙王好音，請奏瑟。」趙王鼓瑟。秦御史前書曰：「某年月日，秦王與趙王會飲，令趙王鼓瑟。」藺相如前曰：「趙王竊聞秦王善為秦聲，請奏盆缻秦王，以相娛樂。」秦王怒，不許。於是相如前進缻，因跪請秦王。秦王不肯擊缻。相如曰：「五步之內，相如請得以頸血濺大王矣！」左右欲刃相如，相如張目叱之，左右皆靡。於是秦王不懌，為一擊缻。相如顧召趙御史書曰：「某年月日，秦王為趙王擊缻。」秦之羣臣曰：「請以趙十五城為秦王壽。」藺相如亦曰：「請以秦之咸陽為趙王壽。」秦王竟酒，終不能加勝於趙。趙亦盛設兵以待秦，秦不敢動。
+
+既罷歸國，以相如功大，拜為上卿，位在廉頗之右。廉頗曰：「我為趙將，有攻城野戰之大功，而藺相如徒以口舌為勞，而位居我上，且相如素賤人，吾羞，不忍為之下。」宣言曰：「我見相如，必辱之。」相如聞，不肯與會。相如每朝時，常稱病，不欲與廉頗爭列。已而相如出，望見廉頗，相如引車避匿。於是舍人相與諫曰：「臣所以去親戚而事君者，徒慕君之高義也。今君與廉頗同列，廉君宣惡言而君畏匿之，恐懼殊甚，且庸人尚羞之，況於將相乎！臣等不肖，請辭去。」藺相如固止之，曰：「公之視廉將軍孰與秦王？」曰：「不若也。」相如曰：「夫以秦王之威，而相如廷叱之，辱其羣臣，相如雖駑，獨畏廉將軍哉？顧吾念之，彊秦之所以不敢加兵於趙者，徒以吾兩人在也。今兩虎共鬥，其勢不俱生。吾所以為此者，以先國家之急而後私讎也。」廉頗聞之，肉袒負荊，因賓客至藺相如門謝罪。曰：「鄙賤之人，不知將軍寬之至此也。」卒相與驩，為刎頸之交。`,
+  },
+  6:{
+    original:`先帝創業未半，而中道崩殂，今天下三分，益州疲弊，此誠危急存亡之秋也。然侍衞之臣，不懈於內；忠志之士，忘身於外者，蓋追先帝之殊遇，欲報之於陛下也。
+
+誠宜開張聖聽，以光先帝遺德，恢弘志士之氣；不宜妄自菲薄，引喻失義，以塞忠諫之路也。
+
+宮中、府中，俱為一體，陟罰臧否，不宜異同。若有作姦犯科，及為忠善者，宜付有司，論其刑賞，以昭陛下平明之治；不宜偏私，使內外異法也。
+
+侍中、侍郎郭攸之、費禕、董允等，此皆良實，志慮忠純，是以先帝簡拔以遺陛下。愚以為宮中之事，事無大小，悉以咨之，然後施行，必能裨補闕漏，有所廣益。將軍向寵，性行淑均，曉暢軍事，試用於昔日，先帝稱之曰「能」，是以眾議舉寵為督。愚以為營中之事，悉以咨之，必能使行陣和睦，優劣得所。
+
+親賢臣，遠小人，此先漢所以興隆也；親小人，遠賢臣，此後漢所以傾頹也。先帝在時，每與臣論此事，未嘗不歎息痛恨於桓、靈也！侍中、尚書、長史、參軍，此悉貞良死節之臣，願陛下親之、信之，則漢室之隆，可計日而待也。
+
+臣本布衣，躬耕於南陽，苟全性命於亂世，不求聞達於諸侯。先帝不以臣卑鄙，猥自枉屈，三顧臣於草廬之中，諮臣以當世之事，由是感激，遂許先帝以驅馳。後值傾覆，受任於敗軍之際，奉命於危難之間，爾來二十有一年矣。先帝知臣謹慎，故臨崩寄臣以大事也。受命以來，夙夜憂歎，恐託付不效，以傷先帝之明。故五月渡瀘，深入不毛。今南方已定，兵甲已足，當獎率三軍，北定中原，庶竭駑鈍，攘除姦凶，興復漢室，還於舊都。此臣所以報先帝而忠陛下之職分也。至於斟酌損益，進盡忠言，則攸之、禕、允之任也。
+
+願陛下託臣以討賊興復之效；不效，則治臣之罪，以告先帝之靈。若無興德之言，則責攸之、禕、允等之慢，以彰其咎。陛下亦宜自謀，以諮諏善道，察納雅言，深追先帝遺詔。臣不勝受恩感激。今當遠離，臨表涕零，不知所言。`,
+  },
+  7:{
+    original:`古之學者必有師。師者，所以傳道、受業、解惑也。人非生而知之者，孰能無惑？惑而不從師，其為惑也終不解矣。
+
+生乎吾前，其聞道也，固先乎吾，吾從而師之；生乎吾後，其聞道也，亦先乎吾，吾從而師之。吾師道也，夫庸知其年之先後生於吾乎？是故無貴無賤，無長無少，道之所存，師之所存也。
+
+嗟乎！師道之不傳也久矣！欲人之無惑也難矣！古之聖人，其出人也遠矣，猶且從師而問焉；今之眾人，其下聖人也亦遠矣，而恥學於師。是故聖益聖，愚益愚，聖人之所以為聖，愚人之所以為愚，其皆出於此乎！
+
+愛其子，擇師而教之；於其身也，則恥師焉，惑矣！彼童子之師，授之書而習其句讀者，非吾所謂傳其道、解其惑者也。句讀之不知，惑之不解，或師焉，或不焉，小學而大遺，吾未見其明也。
+
+巫、醫、樂師、百工之人，不恥相師；士大夫之族，曰師、曰弟子云者，則羣聚而笑之。問之，則曰：「彼與彼年相若也，道相似也。」位卑則足羞，官盛則近諛。嗚呼！師道之不復，可知矣。巫、醫、樂師、百工之人，君子不齒，今其智乃反不能及，其可怪也歟！
+
+聖人無常師。孔子師郯子、萇弘、師襄、老聃。郯子之徒，其賢不及孔子。孔子曰：「三人行，則必有我師。」是故弟子不必不如師，師不必賢於弟子；聞道有先後，術業有專攻，如是而已。
+
+李氏子蟠，年十七，好古文，六藝經傳，皆通習之，不拘於時，學於余。余嘉其能行古道，作《師說》以貽之。`,
+  },
+  9:{
+    original:`慶曆四年春，滕子京謫守巴陵郡。越明年，政通人和，百廢具興。乃重修岳陽樓，增其舊制，刻唐賢、今人詩賦於其上；屬予作文以記之。
+
+予觀夫巴陵勝狀，在洞庭一湖。銜遠山，吞長江，浩浩湯湯，橫無際涯；朝暉夕陰，氣象萬千。此則岳陽樓之大觀也，前人之述備矣。然則北通巫峽，南極瀟湘，遷客騷人，多會於此，覽物之情，得無異乎？
+
+若夫霪雨霏霏，連月不開；陰風怒號，濁浪排空；日星隱耀，山岳潛形；商旅不行，檣傾楫摧；薄暮冥冥，虎嘯猿啼。登斯樓也，則有去國懷鄉，憂讒畏譏，滿目蕭然，感極而悲者矣。
+
+至若春和景明，波瀾不驚，上下天光，一碧萬頃；沙鷗翔集，錦鱗游泳；岸芷汀蘭，郁郁青青。而或長煙一空，皓月千里，浮光躍金，靜影沉璧；漁歌互答，此樂何極！登斯樓也，則有心曠神怡，寵辱皆忘，把酒臨風，其喜洋洋者矣。
+
+嗟夫！予嘗求古仁人之心，或異二者之為。何哉？不以物喜，不以己悲。居廟堂之高，則憂其民；處江湖之遠，則憂其君。是進亦憂，退亦憂，然則何時而樂耶？其必曰：「先天下之憂而憂，後天下之樂而樂」歟！噫！微斯人，吾誰與歸！`,
+  },
+  3:{
+    original:`惠子謂莊子曰：「魏王貽我大瓠之種，我樹之成而實五石。以盛水漿，其堅不能自舉也。剖之以為瓢，則瓠落無所容。非不呺然大也，吾為其無用而掊之。」莊子曰：「夫子固拙於用大矣！宋人有善為不龜手之藥者，世世以洴澼絖為事。客聞之，請買其方百金。聚族而謀曰：『我世世為洴澼絖，不過數金；今一朝而鬻技百金，請與之。』客得之，以說吳王。越有難，吳王使之將，冬與越人水戰，大敗越人，裂地而封之。能不龜手一也；或以封，或不免於洴澼絖，則所用之異也。今子有五石之瓠，何不慮以為大樽而浮於江湖，而憂其瓠落無所容，則夫子猶有蓬之心也夫！」
+
+惠子謂莊子曰：「吾有大樹，人謂之樗；其大本擁腫而不中繩墨，其小枝卷曲而不中規矩。立之塗，匠者不顧。今子之言，大而無用，眾所同去也。」莊子曰：「子獨不見狸狌乎？卑身而伏，以候敖者；東西跳梁，不辟高下，中於機辟，死於罔罟。今夫斄牛，其大若垂天之雲；此能為大矣，而不能執鼠。今子有大樹，患其無用，何不樹之於無何有之鄉，廣莫之野，彷徨乎無為其側，逍遙乎寢卧其下；不夭斤斧，物無害者。無所可用，安所困苦哉？」`,
+  },
+  10:{
+    original:`六國破滅，非兵不利，戰不善，弊在賂秦。賂秦而力虧，破滅之道也。或曰：「六國互喪，率賂秦耶？」曰：「不賂者以賂者喪。蓋失強援，不能獨完，故曰『弊在賂秦』也。」
+
+秦以攻取之外，小則獲邑，大則得城，較秦之所得與戰勝而得者，其實百倍；諸侯之所亡與戰敗而亡者，其實亦百倍。則秦之所大欲，諸侯之所大患，固不在戰矣。思厥先祖父，暴霜露，斬荊棘，以有尺寸之地。子孫視之不甚惜，舉以予人，如棄草芥。今日割五城，明日割十城，然後得一夕安寢，起視四境，而秦兵又至矣。然則諸侯之地有限，暴秦之欲無厭，奉之彌繁，侵之愈急，故不戰而強弱勝負已判矣。至於顛覆，理固宜然。古人云：「以地事秦，猶抱薪救火，薪不盡，火不滅。」此言得之。
+
+齊人未嘗賂秦，終繼五國遷滅，何哉？與嬴而不助五國也。五國既喪，齊亦不免矣。燕趙之君，始有遠略，能守其土，義不賂秦。是故燕雖小國而後亡，斯用兵之效也。至丹以荊卿為計，始速禍焉。趙嘗五戰于秦，二敗而三勝，後秦擊趙者再，李牧連卻之。洎牧以讒誅，邯鄲為郡，惜其用武而不終也。且燕趙處秦革滅殆盡之際，可謂智力孤危，戰敗而亡，誠不得已。向使三國各愛其地，齊人勿附於秦，刺客不行，良將猶在，則勝負之數，存亡之理，當與秦相較，或未易量。
+
+嗚呼！以賂秦之地，封天下之謀臣；以事秦之心，禮天下之奇才；幷力西嚮，則吾恐秦人食之不得下嚥也。悲夫！有如此之勢，而為秦人積威之所劫，日削月割，以趨於亡。為國者無使為積威之所劫哉！
+
+夫六國與秦皆諸侯，其勢弱於秦，而猶有可以不賂而勝之之勢；茍以天下之大，而從六國破亡之故事，是又在六國下矣！`
+  },
+  11:{
+    original:`空山新雨後，天氣晚來秋。
+明月松間照，清泉石上流。
+竹喧歸浣女，蓮動下漁舟。
+隨意春芳歇，王孫自可留。`
+  },
+  12:{
+    original:`花間一壺酒，獨酌無相親。
+舉杯邀明月，對影成三人。
+月既不解飲，影徒隨我身。
+暫伴月將影，行樂須及春。
+我歌月徘徊，我舞影零亂。
+醒時同交歡，醉後各分散。
+永結無情遊，相期邈雲漢。`
+  },
+  13:{
+    original:`花近高樓傷客心，萬方多難此登臨。
+錦江春色來天地，玉壘浮雲變古今。
+北極朝廷終不改，西山寇盜莫相侵。
+可憐後主還祠廟，日暮聊為梁甫吟。`
+  },
+  14:{
+    original:`大江東去，浪淘盡、千古風流人物。故壘西邊，人道是、三國周郎赤壁。亂石穿空，驚濤拍岸，捲起千堆雪。江山如畫，一時多少豪傑！
+遙想公瑾當年，小喬初嫁了，雄姿英發。羽扇綸巾，談笑間、檣櫓灰飛煙滅。故國神遊，多情應笑我，早生華髮。人間如夢，一尊還酹江月。`
+  },
+  15:{
+    original:`尋尋覓覓，冷冷清清，悽悽慘慘戚戚。乍煖還寒時候，最難將息。三杯兩盞淡酒，怎敵他，晚來風急！雁過也，正傷心，卻是舊時相識。
+滿地黃花堆積，憔悴損，如今有誰堪摘？守着窗兒，獨自怎生得黑！梧桐更兼細雨，到黃昏、點點滴滴。這次第，怎一箇愁字了得！`
+  },
+  16:{
+    original:`東風夜放花千樹，更吹落、星如雨。寶馬雕車香滿路。鳳簫聲動，玉壺光轉，一夜魚龍舞。
+蛾兒雪柳黃金縷，笑語盈盈暗香去。眾裏尋他千百度；驀然迴首，那人卻在、燈火闌珊處。`
+  }
+};
+
+let isAdmin=false,curTx=null,curSec=null,isEdit=false,tmpV=[];
+let pageHistory=[];
+let store={};
+
+async function loadStore(){
+  try{const r=localStorage.getItem('dse_data');if(r)store=JSON.parse(r);}catch(e){store={};}
+  if(!localStorage.getItem('dse_vocab_cleared')){
+    for(const id of Object.keys(store)){delete store[id].vocab_cards;delete store[id].sent_vocab;}
+    localStorage.setItem('dse_vocab_cleared','1');
+  }
+  const savedVer=parseInt(localStorage.getItem('dse_preset_ver')||'0');
+  const forceUpdate=savedVer<PRESET_VERSION;
+  for(const[id,data] of Object.entries(PRESET)){
+    if(!store[id])store[id]={};
+    if((forceUpdate||!store[id].original)&&data.original)store[id].original=data.original;
+    if((forceUpdate||!store[id].vocab_cards)&&data.vocab_cards)store[id].vocab_cards=data.vocab_cards;
+    if((forceUpdate||!store[id].sent_vocab)&&data.sent_vocab)store[id].sent_vocab=data.sent_vocab;
+    ['theme','para','argument','rhetoric','dse'].forEach(k=>{
+      if((forceUpdate||!store[id][k+'_struct'])&&data[k+'_struct'])store[id][k+'_struct']=data[k+'_struct'];
+    });
+  }
+  if(forceUpdate)localStorage.setItem('dse_preset_ver',PRESET_VERSION);
+}
+async function saveStore(){
+  try{localStorage.setItem('dse_data',JSON.stringify(store));toast('已儲存','ok');}
+  catch(e){toast('儲存失敗','er');}
+}
+function get(id,k){return(store[id]&&store[id][k])||'';}
+function set(id,k,v){if(!store[id])store[id]={};store[id][k]=v;}
+function getV(id){try{return JSON.parse(get(id,'vocab_cards'))||[];}catch{return[];}}
+function setV(id,a){set(id,'vocab_cards',JSON.stringify(a));}
+function getSV(id){try{return JSON.parse(get(id,'sent_vocab'))||[];}catch{return[];}}
+function setSV(id,a){set(id,'sent_vocab',JSON.stringify(a));}
+
+function showPg(id){
+  document.querySelectorAll('.pg').forEach(p=>{p.classList.remove('on');});
+  const next=document.getElementById('pg-'+id);
+  if(next){next.classList.add('on');window.scrollTo(0,0);}
+}
+function goBack(){
+  if(isEdit&&!confirm('你有未儲存的內容，確定要離開？'))return;
+  isEdit=false;
+  if(pageHistory.length>1){
+    pageHistory.pop();
+    const prev=pageHistory[pageHistory.length-1];
+    if(prev==='home'){curTx=null;curSec=null;updateBC();renderHome();showPg('home');}
+    else if(prev==='text'&&curTx){curSec=null;updateBC();renderTx();showPg('text');}
+    else if(prev==='compare'){renderCompareSetup();showPg('compare');}
+    else goHome();
+  } else goHome();
+  updateBackBtn();
+}
+function goHome(){
+  if(isEdit&&!confirm('你有未儲存的內容，確定要離開？'))return;
+  curTx=null;curSec=null;isEdit=false;pageHistory=['home'];updateBC();renderHome();showPg('home');updateBackBtn();
+}
+function updateBackBtn(){
+  const btn=document.getElementById('backBtn');
+  if(btn)btn.classList.toggle('show',pageHistory.length>1);
+}
+function goTx(id){
+  if(isEdit&&!confirm('你有未儲存的內容，確定要離開？'))return;
+  curTx=TX.find(t=>t.id===id);curSec=null;isEdit=false;pageHistory=['home','text'];updateBC();renderTx();showPg('text');updateBackBtn();
+}
+function goSec(k){curSec=SEC.find(s=>s.key===k);isEdit=false;tmpV=[...getV(curTx.id)];pageHistory=['home','text','content'];updateBC();renderCp();showPg('content');updateBackBtn();}
+
+function updateBC(){
+  const bc=document.getElementById('bc');
+  let h='';
+  if(curTx)h+=`<span class="bci" onclick="goHome()">目錄</span><span class="bcs">›</span><span class="bci" onclick="goTx(${curTx.id})">${curTx.title}</span>`;
+  if(curSec)h+=`<span class="bcs">›</span><span class="bci">${curSec.label}</span>`;
+  bc.innerHTML=h;
+}
+
+function getRead(){try{return JSON.parse(localStorage.getItem('dse_read')||'{}');}catch{return{};}}
+function setRead(id,v){const r=getRead();r[id]=v;localStorage.setItem('dse_read',JSON.stringify(r));}
+function toggleRead(id,e){e.stopPropagation();const r=getRead();setRead(id,!r[id]);renderHome();}
+function renderHome(){
+  const read=getRead();
+  const cards=TX.map((t,cardIdx)=>{
+    const filled=SEC.filter(s=>{
+      if(s.isV)return getV(t.id).length>0;
+      if(s.isTheme||s.isPara||s.isArg||s.isRhet||s.isDse)return getStructured(t.id,s.key).length>0;
+      return !!get(t.id,s.key);
+    }).length;
+    const pct=Math.round(filled/SEC.length*100);
+    const isRead=read[t.id];
+    const dyColor={'春秋':'#8b6914','戰國':'#6b4c11','西漢':'#5c3d8f','三國':'#7a2020','唐':'#1a5c8f','北宋':'#2e6b3e','南宋':'#1e5e5e'}[t.dy]||'#555';
+    return`<div class="card" onclick="goTx(${t.id})" style="animation-delay:${cardIdx*30}ms">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+        <div style="display:flex;align-items:center;gap:7px;">
+          <span class="cn">第${String(t.id).padStart(2,'0')}篇</span>
+          <span class="dy-tag" style="background:${dyColor}18;color:${dyColor};border:1px solid ${dyColor}30;">${t.dy}</span>
+        </div>
+        <button class="read-toggle${isRead?' done':''}" onclick="toggleRead(${t.id},event)">${isRead?'✓ 已讀':'標為已讀'}</button>
+      </div>
+      <div class="ct">${t.title}</div>
+      <div class="ca">${t.author}</div>
+      ${isAdmin?`<div class="card-progress-wrap">
+        <div class="card-progress-bar" style="width:${pct}%"></div>
+      </div>
+      <div class="card-progress-label">${filled === SEC.length ? '✦ 全部完成' : `${filled} / ${SEC.length} 個項目`}</div>`:''}
+    </div>`;
+  }).join('');
+  document.getElementById('grid').innerHTML=cards;
+  // stats
+  const readCount=Object.values(read).filter(Boolean).length;
+  const statsEl=document.getElementById('homeStats');
+  if(statsEl){
+    statsEl.innerHTML=`<span class="stat-item">📚 ${TX.length} 篇</span><span class="stat-div">·</span><span class="stat-item">✓ 已讀 ${readCount} 篇</span>`;
+  }
+}
+
+function toggleReadTx(){
+  const r=getRead();
+  setRead(curTx.id,!r[curTx.id]);
+  renderHome();
+  renderTx();
+}
+function renderTx(){
+  const t=curTx;
+  const dyColor={'春秋':'#8b6914','戰國':'#6b4c11','西漢':'#5c3d8f','三國':'#7a2020','唐':'#1a5c8f','北宋':'#2e6b3e','南宋':'#1e5e5e'}[t.dy]||'#555';
+  const isRead=getRead()[t.id];
+  document.getElementById('tmeta').textContent=`第${String(t.id).padStart(2,'0')}篇`;
+  document.getElementById('ttitle').textContent=t.title;
+  document.getElementById('tauthor').textContent=t.author;
+  // dynasty tag
+  const dyTag=document.getElementById('tdy-tag');
+  if(dyTag){dyTag.textContent=t.dy;dyTag.style.cssText=`background:${dyColor}18;color:${dyColor};border:1px solid ${dyColor}30;`;}
+  // read button
+  const readBtn=document.getElementById('txReadBtn');
+  if(readBtn){readBtn.textContent=isRead?'✓ 已讀':'標為已讀';readBtn.className='read-toggle'+(isRead?' done':'');}
+  // progress
+  const filled=SEC.filter(s=>{
+    if(s.isV)return getV(t.id).length>0;
+    if(s.isTheme||s.isPara||s.isArg||s.isRhet||s.isDse)return getStructured(t.id,s.key).length>0;
+    return !!get(t.id,s.key);
+  }).length;
+  const pct=Math.round(filled/SEC.length*100);
+  const bar=document.getElementById('txProgressBar');
+  const lbl=document.getElementById('txProgressLabel');
+  if(bar)setTimeout(()=>{bar.style.width=isAdmin?pct+'%':'0%';},50);
+  if(lbl)lbl.style.display=isAdmin?'block':'none';
+  if(lbl)lbl.textContent=filled===SEC.length?'✦ 全部完成':`${filled} / ${SEC.length} 個項目`;
+  const wrap=document.querySelector('.tx-progress-wrap');
+  if(wrap)wrap.style.display=isAdmin?'block':'none';
+  // sections
+  document.getElementById('slist').innerHTML=SEC.map((s,si)=>{
+    const has=s.isV?getV(t.id).length>0:s.isTheme||s.isPara||s.isArg||s.isRhet||s.isDse?getStructured(t.id,s.key).length>0:!!get(t.id,s.key);
+    const cnt=s.isV?getV(t.id).length:s.isTheme||s.isPara||s.isArg||s.isRhet||s.isDse?getStructured(t.id,s.key).length:0;
+    const sub=has?(s.isV?`已有 ${cnt} 張卡牌`:s.isTheme?'已有內容':s.isPara||s.isArg||s.isRhet||s.isDse?`已有 ${cnt} 項`:'已有內容'):s.sub;
+    return`<div class="se${has?' filled':''}" onclick="goSec('${s.key}')" style="animation:cardIn .3s cubic-bezier(.22,1,.36,1) ${si*40}ms both">
+      <div class="sel"><div class="sic">${s.icon}</div>
+      <div><div class="slb">${s.label}</div><div class="ssb">${sub}</div></div></div>
+      <div class="sar">›</div>
+    </div>`;
+  }).join('');
+}
+
+function renderCp(){
+  document.getElementById('ctitle').textContent=curSec.label;
+  document.getElementById('csub').textContent=`${curTx.title} · ${curTx.author}`;
+  const act=document.getElementById('cact');
+  if(curSec.isV){
+    act.innerHTML=isAdmin?(isEdit?`<button class="sbtn" onclick="saveV()">儲存卡牌</button>`:`<button class="ebtn" onclick="startEdit()">編輯卡牌</button>`):'';
+    renderVocab();
+  } else if(curSec.isTheme||curSec.isPara||curSec.isArg||curSec.isRhet||curSec.isDse){
+    act.innerHTML=isAdmin?(isEdit?`<button class="sbtn" onclick="saveStructured()">儲存</button>`:`<button class="ebtn" onclick="startEdit()">編輯</button>`):'';
+    renderStructured();
+  } else {
+    act.innerHTML=isAdmin?(isEdit?`<button class="sbtn" onclick="saveTxt()">儲存</button>`:`<button class="ebtn" onclick="startEdit()">編輯</button>`):'';
+    renderTxt();
+  }
+  const rem=document.getElementById('saveReminder');
+  if(rem)rem.classList.toggle('show', isEdit&&isAdmin);
+}
+
+function renderTxt(){
+  const c=get(curTx.id,curSec.key);
+  const b=document.getElementById('cbody');
+  if(isEdit){
+    b.innerHTML=`<textarea class="editor" id="ed">${esc(c)}</textarea><div class="hint">儲存後所有人即時可見</div>`;
+    document.getElementById('ed').focus();
+  } else {
+    b.innerHTML=c?`<div class="disp">${esc(c)}</div>`:`<div class="empty">${isAdmin?'點擊右上角「編輯」以新增內容':'暫無內容，等待管理員新增'}</div>`;
+  }
+}
+
+// ── STRUCTURED SECTIONS ──
+let tmpStructured=[];
+
+function getStructured(id,key){try{return JSON.parse(get(id,key+'_struct'))||[];}catch{return[];}}
+function setStructured(id,key,a){set(id,key+'_struct',JSON.stringify(a));}
+
+function secSchema(key){
+  if(key==='theme')return[
+    {id:'main',label:'文章主旨（一句總結）',ta:false,ph:'例：本文旨在闡述仁德的重要，勸勉讀者時刻實踐仁德。'},
+    {id:'detail',label:'詳細分析',ta:true,ph:'進一步闡述主旨，包括作者意圖、文章核心思想等。'},
+  ];
+  if(key==='para')return[
+    {id:'num',label:'段落',ta:false,ph:'例：第一段'},
+    {id:'summary',label:'段落大意',ta:true,ph:'簡述本段內容。'},
+    {id:'role',label:'段落作用',ta:false,ph:'例：起（引入主題）／論點／論據／結論'},
+  ];
+  if(key==='argument')return[
+    {id:'name',label:'論證手法',ta:false,ph:'例：類比論證、對比論證、舉例論證'},
+    {id:'quote',label:'原文例句',ta:false,ph:'引用原文'},
+    {id:'analysis',label:'分析效果',ta:true,ph:'說明此論證如何支持論點，效果如何。'},
+  ];
+  if(key==='rhetoric')return[
+    {id:'name',label:'修辭手法',ta:false,ph:'例：對偶、排比、比喻、反問'},
+    {id:'quote',label:'原文例句',ta:false,ph:'引用原文'},
+    {id:'analysis',label:'分析效果',ta:true,ph:'說明此修辭手法的表達效果。'},
+  ];
+  if(key==='dse')return[
+    {id:'year',label:'年份',ta:false,ph:'例：2023'},
+    {id:'question',label:'題目內容',ta:true,ph:'填入題目原文'},
+    {id:'marks',label:'分數',ta:false,ph:'例：4分'},
+    {id:'answer',label:'答題要點（可選填）',ta:true,ph:'填入參考答案要點'},
+  ];
+  return[];
+}
+
+function cardLabel(key,item){
+  if(key==='theme')return item.main||'文章主旨';
+  if(key==='para')return item.num||'段落';
+  if(key==='argument')return item.name||'論證手法';
+  if(key==='rhetoric')return item.name||'修辭手法';
+  if(key==='dse')return (item.year?item.year+'年 ':'')+( item.question||'題目').slice(0,20)+'…';
+  return '';
+}
+
+function tagColor(key){
+  if(key==='argument')return 'blue';
+  if(key==='rhetoric')return 'amber';
+  if(key==='dse')return 'green';
+  return '';
+}
+
+function renderStructured(){
+  const b=document.getElementById('cbody');
+  const key=curSec.key;
+  const items=isEdit?tmpStructured:getStructured(curTx.id,key);
+  const schema=secSchema(key);
+
+  if(isEdit){
+    const itemsHtml=tmpStructured.map((item,i)=>{
+      const label=cardLabel(key,item)||`第${i+1}項`;
+      return`<div class="sec-card sec-card-draggable" draggable="true" data-idx="${i}"
+        ondragstart="dragStart(event,${i})"
+        ondragover="dragOver(event)"
+        ondrop="dragDrop(event,${i})"
+        ondragend="dragEnd(event)">
+        <div class="sec-card-header">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span class="drag-handle">⠿</span>
+            <span class="sec-card-title">${esc(label)}</span>
+          </div>
+          <button class="dbtn" onclick="delStructured(${i})">刪除</button>
+        </div>
+        ${schema.map(f=>`<div class="sec-field">
+          <div class="sec-label">${f.label}</div>
+          ${f.ta
+            ?`<textarea class="field-inp ta" style="min-height:60px;" oninput="tmpStructured[${i}]['${f.id}']=this.value">${esc(item[f.id]||'')}</textarea>`
+            :`<input class="field-inp" value="${esc(item[f.id]||'')}" oninput="tmpStructured[${i}]['${f.id}']=this.value"/>`
+          }
+        </div>`).join('')}
+      </div>`;
+    }).join('');
+    const fields=schema.map(f=>`
+      <div class="field-row">
+        <div class="field-label">${f.label}</div>
+        ${f.ta?`<textarea class="field-inp ta" id="sf_${f.id}" placeholder="${f.ph}"></textarea>`:`<input class="field-inp" id="sf_${f.id}" placeholder="${f.ph}"/>`}
+      </div>`).join('');
+    b.innerHTML=`
+      <div class="add-card">
+        <div class="add-card-title">新增${curSec.label}</div>
+        ${fields}
+        <button class="abtn" id="addStructuredBtn" onclick="addStructured()">新增</button>
+      </div>
+      <div class="add-card-title" style="font-size:.82rem;color:var(--ink-light);margin-bottom:8px;">已有內容（${tmpStructured.length}項）</div>
+      <div class="sec-cards-list">${itemsHtml||'<div style="color:var(--ink-faint);font-size:.82rem">未有內容</div>'}</div>`;
+    // Enter 跳欄位
+    schema.forEach((f,i)=>{
+      const el=document.getElementById('sf_'+f.id);
+      if(!el)return;
+      el.addEventListener('keydown',e=>{
+        if(e.key==='Enter'&&!e.shiftKey){
+          e.preventDefault();
+          const next=schema[i+1];
+          if(next){
+            const nextEl=document.getElementById('sf_'+next.id);
+            if(nextEl)nextEl.focus();
+          } else {
+            addStructured();
+          }
+        }
+      });
+    });
+  } else {
+    if(!items.length){
+      b.innerHTML=`<div class="empty">${isAdmin?'點擊右上角「編輯」以新增內容':'暫無內容，等待管理員新增'}</div>`;
+    } else {
+      const tc=tagColor(key);
+      const ans=key==='dse'?getDseAnswers(curTx.id):{};
+      b.innerHTML=`<div class="sec-cards-list">${items.map((item,idx)=>`
+        <div class="sec-card">
+          <div class="sec-card-header"><span class="sec-card-title ${tc?'sec-tag '+tc:''}">${esc(cardLabel(key,item))}</span></div>
+          ${schema.slice(1).filter(f=>item[f.id]).map(f=>`
+            <div class="sec-field">
+              <div class="sec-label">${f.label}</div>
+              <div class="sec-val">${esc(item[f.id])}</div>
+            </div>`).join('')}
+          ${key==='dse'?`<div class="dse-answer-box">
+            <div class="dse-answer-label">我的作答</div>
+            <textarea class="dse-answer-inp" id="dseai${idx}" placeholder="在此輸入你的答案…" onblur="saveDseAnswer(${curTx.id},${idx},this.value)">${esc(ans[idx]||'')}</textarea>
+            <div class="dse-answer-saved" id="dsesaved${idx}">✅ 已儲存</div>
+          </div>`:''}
+        </div>`).join('')}
+      </div>`;
+    }
+  }
+}
+
+function addStructured(){
+  const schema=secSchema(curSec.key);
+  const item={};
+  schema.forEach(f=>{
+    const el=document.getElementById('sf_'+f.id);
+    if(el)item[f.id]=el.value.trim();
+  });
+  const first=schema[0];
+  if(!item[first.id]){toast('請填寫'+first.label,'er');return;}
+  tmpStructured.push(item);
+  renderStructured();
+  setTimeout(()=>{
+    schema.forEach(f=>{const el=document.getElementById('sf_'+f.id);if(el)el.value='';});
+    const el=document.getElementById('sf_'+first.id);if(el)el.focus();
+  },50);
+}
+
+function delStructured(i){tmpStructured.splice(i,1);renderStructured();}
+let dragSrcIdx=null;
+function dragStart(e,i){
+  dragSrcIdx=i;
+  e.dataTransfer.effectAllowed='move';
+  setTimeout(()=>{const el=document.querySelector(`[data-idx="${i}"]`);if(el)el.classList.add('dragging');},0);
+}
+function dragOver(e){
+  e.preventDefault();
+  e.dataTransfer.dropEffect='move';
+  document.querySelectorAll('.sec-card-draggable').forEach(el=>el.classList.remove('drag-over'));
+  e.currentTarget.classList.add('drag-over');
+}
+function dragDrop(e,i){
+  e.preventDefault();
+  if(dragSrcIdx===null||dragSrcIdx===i)return;
+  const moved=tmpStructured.splice(dragSrcIdx,1)[0];
+  tmpStructured.splice(i,0,moved);
+  dragSrcIdx=null;
+  renderStructured();
+}
+function dragEnd(e){
+  dragSrcIdx=null;
+  document.querySelectorAll('.sec-card-draggable').forEach(el=>el.classList.remove('dragging','drag-over'));
+}
+
+async function saveStructured(){
+  setStructured(curTx.id,curSec.key,tmpStructured);
+  await saveStore();
+  isEdit=false;renderCp();renderTx();renderHome();
+}
+
+let vTab='sent'; // 'sent' or 'quiz'
+let pendingWords=[];
+let pendingSource='';
+let tmpSV=[]; // temp sentence vocab
+
+function parseBold(s){
+  return s.replace(/\*([^*]+)\*/g,'<span style="text-decoration:underline;text-underline-offset:3px;">$1</span>');
+}
+function extractBoldWords(s){
+  const matches=[];
+  const re=/\*([^*]+)\*/g;let m;
+  while((m=re.exec(s))!==null)matches.push(m[1]);
+  return matches;
+}
+
+function renderVocab(){
+  const b=document.getElementById('cbody');
+  const sv=getSV(curTx.id);
+  const cards=getV(curTx.id);
+
+  // tabs
+  const tabs=`<div class="vtabs">
+    <button class="vtab${vTab==='sent'?' on':''}" onclick="setVTab('sent')">句子語譯</button>
+    <button class="vtab${vTab==='quiz'?' on':''}" onclick="setVTab('quiz')">測驗模式</button>
+  </div>`;
+
+  if(vTab==='sent'){
+    if(isEdit){
+      const rows=tmpSV.map((s,i)=>`<div class="sedit-row" style="flex-direction:column;gap:8px;align-items:stretch;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+          <span style="font-size:.72rem;color:var(--ink-faint);letter-spacing:.08em;">第${i+1}句</span>
+          <button class="dbtn" onclick="delSV(${i})">刪除</button>
+        </div>
+        <div>
+          <div class="field-label">原文（用 *字* 標記底線）</div>
+          <input class="field-inp" value="${esc(s.orig)}" oninput="tmpSV[${i}].orig=this.value" placeholder="原文句子"/>
+        </div>
+        <div>
+          <div class="field-label">語譯</div>
+          <textarea class="field-inp ta" style="min-height:52px;" oninput="tmpSV[${i}].trans=this.value">${esc(s.trans)}</textarea>
+        </div>
+      </div>`).join('');
+      b.innerHTML=tabs+`<div class="sadd">
+        <div class="sadd-title">新增句子語譯（用 *字* 標記底線字，底線字自動加入測驗卡牌）</div>
+        <div class="sadd-row"><input class="sadd-inp" id="sv-orig" placeholder="原文句子，例：*舍*生而取義者也"/></div>
+        <div class="sadd-row"><input class="sadd-inp" id="sv-trans" placeholder="語譯，例：捨棄生命而選取道義"/><button class="abtn" onclick="addSV()">新增</button></div>
+        <div class="hint">底線字會自動抽取，加入測驗模式</div>
+      </div>
+      <div class="sadd" style="margin-top:4px;">
+        <div class="sadd-title">批量新增句子（每行：原文｜語譯，可用 *字* 標記底線）</div>
+        <textarea class="editor" id="bulkSVInp" style="min-height:110px;font-size:.85rem;" placeholder="*舍*生而取義者也｜捨棄生命而選取道義&#10;生亦我所*欲*也｜生命也是我想要的"></textarea>
+        <button class="abtn" onclick="bulkAddSV()" style="margin-top:8px;">批量加入</button>
+      </div>
+      <div style="font-size:.82rem;color:var(--ink-light);margin-bottom:8px">現有句子（${tmpSV.length}條）</div>
+      <div class="slist-edit">${rows||'<div style="color:var(--ink-faint);font-size:.82rem">未有句子</div>'}</div>`;
+      document.getElementById('sv-orig').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('sv-trans').focus();});
+      document.getElementById('sv-trans').addEventListener('keydown',e=>{if(e.key==='Enter')addSV();});
+    } else {
+      if(!sv.length){
+        b.innerHTML=tabs+`<div class="empty">${isAdmin?'點擊右上角「編輯」以新增句子語譯':'暫無內容，等待管理員新增'}</div>`;
+      } else {
+        const cards_html=sv.map(s=>{
+          const words=extractBoldWords(s.orig);
+          const whtml=words.map(w=>{
+            const card=getV(curTx.id).find(c=>c.front===w);
+            return card?`<span class="sword">${esc(w)}：${esc(card.back)}</span>`:'';
+          }).filter(Boolean).join('');
+          return`<div class="scard">
+            <div class="scard-row">
+              <div class="scard-left"><div class="scard-label">原文</div><div class="scard-orig">${parseBold(esc(s.orig))}</div></div>
+              <div class="scard-div"></div>
+              <div class="scard-right"><div class="scard-label">語譯</div><div class="scard-trans">${esc(s.trans)}</div></div>
+            </div>
+            ${whtml?`<div class="scard-words">${whtml}</div>`:''}
+          </div>`;
+        }).join('');
+        b.innerHTML=tabs+cards_html;
+      }
+    }
+  } else if(vTab==='quiz'){
+    if(isAdmin&&isEdit){
+      const cards=tmpV;
+      const rows=cards.map((c,i)=>`<div class="sedit-row" style="flex-direction:column;gap:6px;">
+        <div style="display:flex;gap:8px;align-items:center;">
+          <input style="flex:.8;border:1px solid #ccc;border-radius:var(--r);padding:6px 10px;font-family:inherit;font-size:.85rem;outline:none;" value="${esc(c.front)}" oninput="tmpV[${i}].front=this.value" placeholder="字詞"/>
+          <input style="flex:2;border:1px solid #ccc;border-radius:var(--r);padding:6px 10px;font-family:inherit;font-size:.85rem;outline:none;" value="${esc(c.back)}" oninput="tmpV[${i}].back=this.value" placeholder="意思"/>
+          <button class="dbtn" onclick="delV(${i})">刪除</button>
+        </div>
+        ${c.source?`<div style="font-size:.72rem;color:var(--ink-faint);padding:0 2px;">出自：${esc(c.source)}</div>`:''}
+      </div>`).join('');
+      b.innerHTML=tabs+`
+        <div style="font-size:.82rem;color:var(--ink-light);margin-bottom:10px;">字詞卡牌（${cards.length}張）· 直接修改字詞或意思</div>
+        <div class="slist-edit">${rows||'<div style="color:var(--ink-faint);font-size:.82rem">未有卡牌</div>'}</div>
+        <div class="sadd" style="margin-top:16px;">
+          <div class="sadd-title">批量新增字詞（每行：字詞｜意思）</div>
+          <textarea class="editor" id="bulkVocabInp" style="min-height:110px;font-size:.85rem;" placeholder="舍｜通「捨」，放棄&#10;義｜正義、道義&#10;甚於｜在程度上超過"></textarea>
+          <button class="abtn" onclick="bulkAddVocab()" style="margin-top:8px;">批量加入</button>
+        </div>`;
+    } else {
+      const isResume=quizTextId===curTx.id&&quizCards.length&&quizIdx>0&&!quizDone;
+      b.innerHTML=tabs+(isResume?`<div style="font-size:.72rem;color:var(--ink-faint);margin-bottom:10px;">↩ 接續上次進度（第${quizIdx}題）・<button onclick="startQuiz(${curTx.id})" style="background:none;border:none;color:var(--red);font-size:.72rem;cursor:pointer;padding:0;font-family:inherit;">重新開始</button></div>`:'')+'<div id="quizContainer"></div>';
+      const qc=document.getElementById('quizContainer');
+      if(quizTextId!==curTx.id||!quizCards.length){
+        quizCards=[...getV(curTx.id)].filter(c=>c.back);
+        quizCards.sort(()=>Math.random()-.5);
+        quizIdx=0;quizScore=0;quizDone=false;quizWrong=[];quizTextId=curTx.id;
+      }
+      renderQuizInto(qc);
+    }
+    return;
+  }
+}
+
+function setVTab(t){vTab=t;renderVocab();}
+
+function addSV(){
+  const orig=document.getElementById('sv-orig').value.trim();
+  const trans=document.getElementById('sv-trans').value.trim();
+  if(!orig||!trans){toast('請填寫原文同語譯','er');return;}
+  tmpSV.push({orig,trans});
+  const words=extractBoldWords(orig);
+  const newWords=words.filter(w=>!tmpV.find(c=>c.front===w&&c.source===orig));
+  newWords.forEach(w=>tmpV.push({front:w,back:'',source:orig}));
+  document.getElementById('sv-orig').value='';
+  document.getElementById('sv-trans').value='';
+  renderVocab();
+  if(newWords.length){
+    pendingWords=newWords;
+    pendingSource=orig;
+    const container=document.getElementById('cbody');
+    const box=document.createElement('div');
+    box.id='wexpbox';
+    box.style.cssText='background:var(--accent-light);border:1px solid #d4a5a5;border-radius:8px;padding:14px 16px;margin-bottom:16px;';
+    box.innerHTML='<div style="font-size:.78rem;color:var(--accent);font-weight:500;margin-bottom:10px;">偵測到 '+newWords.length+' 個底線字詞，請填寫解釋：</div>'+
+      newWords.map((w,i)=>'<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">'+
+        '<span style="font-family:Noto Serif TC,serif;font-size:.95rem;font-weight:500;min-width:48px;text-decoration:underline;text-underline-offset:3px;">'+esc(w)+'</span>'+
+        '<input id="wexp'+i+'" style="flex:1;border:1px solid #ccc;border-radius:var(--r);padding:6px 10px;font-family:inherit;font-size:.85rem;outline:none;" placeholder="輸入解釋"/>'+
+        '</div>').join('')+
+      '<button onclick="saveWordExp()" style="background:var(--ink);color:#fff;border:none;border-radius:var(--r);padding:7px 14px;font-size:.78rem;cursor:pointer;font-family:inherit;margin-top:4px;">確認解釋</button>';
+    container.insertBefore(box,container.firstChild);
+    document.getElementById('wexp0').focus();
+  }
+}
+function saveWordExp(){
+  pendingWords.forEach((w,i)=>{
+    const val=document.getElementById('wexp'+i).value.trim();
+    const card=tmpV.find(c=>c.front===w&&c.source===pendingSource);
+    if(card&&val)card.back=val;
+  });
+  pendingWords=[];pendingSource='';
+  const box=document.getElementById('wexpbox');
+  if(box)box.remove();
+  toast('解釋已儲存','ok');
+  renderVocab();
+}
+function bulkAddVocab(){
+  const raw=document.getElementById('bulkVocabInp').value.trim();
+  if(!raw){toast('請輸入字詞','er');return;}
+  const lines=raw.split('\n').map(l=>l.trim()).filter(Boolean);
+  let added=0;
+  lines.forEach(line=>{
+    const sep=line.includes('｜')?'｜':line.includes('|')?'|':null;
+    if(!sep)return;
+    const idx=line.indexOf(sep);
+    const front=line.slice(0,idx).trim();
+    const back=line.slice(idx+1).trim();
+    if(front&&back&&!tmpV.find(c=>c.front===front)){tmpV.push({front,back});added++;}
+  });
+  document.getElementById('bulkVocabInp').value='';
+  toast('已新增 '+added+' 個字詞','ok');
+  renderVocab();
+}
+function bulkAddSV(){
+  const raw=document.getElementById('bulkSVInp').value.trim();
+  if(!raw){toast('請輸入句子','er');return;}
+  const lines=raw.split('\n').map(l=>l.trim()).filter(Boolean);
+  let added=0;
+  lines.forEach(line=>{
+    const sep=line.includes('｜')?'｜':line.includes('|')?'|':null;
+    if(!sep)return;
+    const idx=line.indexOf(sep);
+    const orig=line.slice(0,idx).trim();
+    const trans=line.slice(idx+1).trim();
+    if(!orig||!trans)return;
+    tmpSV.push({orig,trans});
+    extractBoldWords(orig).forEach(w=>{
+      if(!tmpV.find(c=>c.front===w&&c.source===orig))tmpV.push({front:w,back:'',source:orig});
+    });
+    added++;
+  });
+  document.getElementById('bulkSVInp').value='';
+  toast('已新增 '+added+' 句','ok');
+  renderVocab();
+}
+function delSV(i){
+  const removed=tmpSV[i];
+  tmpSV.splice(i,1);
+  // remove vocab cards that came from this sentence
+  if(removed&&removed.orig){
+    tmpV=tmpV.filter(c=>c.source!==removed.orig);
+  }
+  renderVocab();
+}
+function delV(i){tmpV.splice(i,1);renderVocab();}
+async function saveV(){
+  // sync source in vocab_cards when sent_vocab orig has changed
+  tmpV=tmpV.map(card=>{
+    if(card.source){
+      const match=tmpSV.find(s=>s.orig===card.source);
+      if(!match){
+        // source句子已唔存在，嘗試靠底線字匹配新句子
+        const newMatch=tmpSV.find(s=>extractBoldWords(s.orig).includes(card.front));
+        if(newMatch)return{...card,source:newMatch.orig};
+        // 匹配唔到，返回null代表要刪除
+        return null;
+      }
+    }
+    return card;
+  }).filter(Boolean); // 刪走所有孤兒卡
+  setSV(curTx.id,tmpSV);
+  setV(curTx.id,tmpV);
+  await saveStore();
+  isEdit=false;renderCp();renderTx();renderHome();
+}
+function startEdit(){
+  isEdit=true;
+  if(curSec.isV){tmpV=[...getV(curTx.id)];tmpSV=[...getSV(curTx.id)];}
+  else if(curSec.isTheme||curSec.isPara||curSec.isArg||curSec.isRhet||curSec.isDse){
+    tmpStructured=[...getStructured(curTx.id,curSec.key)];
+  }
+  renderCp();
+}
+async function saveTxt(){set(curTx.id,curSec.key,document.getElementById('ed').value);await saveStore();isEdit=false;renderCp();renderTx();renderHome();}
+function toggleAdmin(){
+  if(isAdmin){isAdmin=false;document.getElementById('lbtn').textContent='🔒 登入';document.getElementById('lbtn').classList.remove('on');document.getElementById('badge').classList.remove('on');if(isEdit){isEdit=false;if(curSec)renderCp();}toast('已登出');}
+  else openMo();
+}
+function openMo(){document.getElementById('modal').classList.add('on');document.getElementById('pw').value='';document.getElementById('merr').style.display='none';setTimeout(()=>document.getElementById('pw').focus(),100);}
+function closeMo(){document.getElementById('modal').classList.remove('on');}
+function checkPw(){
+  if(document.getElementById('pw').value===PW){
+    isAdmin=true;closeMo();
+    document.getElementById('lbtn').textContent='🔓 登出';document.getElementById('lbtn').classList.add('on');document.getElementById('badge').classList.add('on');
+    toast('已登入為管理員','ok');if(curSec)renderCp();
+  } else {document.getElementById('merr').style.display='block';document.getElementById('pw').value='';document.getElementById('pw').focus();}
+}
+document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)closeMo();});
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function toast(msg,type=''){
+  const t=document.getElementById('toast');t.textContent=msg;
+  t.className='toast'+(type?' '+type:'')+' on';
+  setTimeout(()=>t.classList.remove('on'),2500);
+}
+
+// ── COMPARE ──
+function goCompare(){
+  if(isEdit&&!confirm('你有未儲存的內容，確定要離開？'))return;
+  isEdit=false;
+  pageHistory=['home','compare'];
+  showPg('compare');
+  updateBackBtn();
+  renderCompareSetup();
+}
+function renderCompareSetup(){
+  const setup=document.getElementById('compareSetup');
+  const result=document.getElementById('compareResult');
+  result.innerHTML='';
+  const txOpts=TX.map(t=>`<option value="${t.id}">${t.title}</option>`).join('');
+  const secOpts=SEC.filter(s=>s.key!=='vocab').map(s=>`
+    <label class="compare-check">
+      <input type="checkbox" value="${s.key}" checked> ${s.label}
+    </label>`).join('');
+  setup.innerHTML=`<div class="compare-setup">
+    <div class="compare-setup-title">選擇篇章（可選多於兩篇）</div>
+    <div class="compare-sel-row">
+      <select class="compare-sel" id="cmp1"><option value="">選擇第一篇</option>${txOpts}</select>
+      <select class="compare-sel" id="cmp2"><option value="">選擇第二篇</option>${txOpts}</select>
+      <select class="compare-sel" id="cmp3"><option value="">第三篇（可選）</option>${txOpts}</select>
+    </div>
+    <div class="compare-setup-title">選擇比較項目</div>
+    <div class="compare-check-row">${secOpts}</div>
+    <button class="abtn" onclick="doCompare()">開始比較</button>
+  </div>`;
+}
+function doCompare(){
+  const ids=[
+    parseInt(document.getElementById('cmp1').value),
+    parseInt(document.getElementById('cmp2').value),
+    parseInt(document.getElementById('cmp3').value),
+  ].filter(Boolean);
+  if(ids.length<2){toast('請至少選擇兩篇範文','er');return;}
+  const checks=[...document.querySelectorAll('.compare-check input:checked')].map(c=>c.value);
+  if(!checks.length){toast('請至少選擇一個比較項目','er');return;}
+  const txs=ids.map(id=>TX.find(t=>t.id===id));
+  const secs=SEC.filter(s=>checks.includes(s.key));
+  const cols=txs.map(t=>{
+    const body=secs.map(s=>{
+      let val='';
+      if(s.isTheme||s.isPara||s.isArg||s.isRhet||s.isDse){
+        const items=getStructured(t.id,s.key);
+        val=items.length?items.map(item=>Object.values(item).filter(Boolean).join('　')).join(' | '):'';
+      } else {
+        val=get(t.id,s.key);
+      }
+      return`<div class="compare-sec-title">${s.label}</div>
+        <div class="${val?'compare-sec-val':'compare-empty'}">${val?esc(val):'暫無內容'}</div>`;
+    }).join('');
+    return`<div class="compare-col">
+      <div class="compare-col-header">${t.title}</div>
+      <div class="compare-col-body">${body}</div>
+    </div>`;
+  }).join('');
+  document.getElementById('compareResult').innerHTML=
+    `<div class="compare-grid${txs.length<=2?' cols-2':''}">${cols}</div>`;
+}
+
+// ── QUIZ MODE ──
+let quizCards=[];let quizIdx=0;let quizScore=0;let quizDone=false;let quizTextId=null;let quizWrong=[];
+function startQuiz(textId){
+  quizCards=[...getV(textId)].filter(c=>c.back);
+  quizCards.sort(()=>Math.random()-.5);
+  quizIdx=0;quizScore=0;quizDone=false;quizTextId=textId;quizWrong=[];
+  const qc=document.getElementById('quizContainer');
+  if(qc)renderQuizInto(qc);
+}
+function renderQuizInto(container){
+  if(!quizCards.length){
+    container.innerHTML='<div class="empty">未有字詞卡牌，請先在「字詞語譯」加入內容</div>';return;
+  }
+  if(quizDone){
+    const pct=Math.round(quizScore/quizCards.length*100);
+    const wrongHtml=quizWrong.length?`
+      <div class="quiz-review-title">待複習（${quizWrong.length}個）</div>
+      <div class="quiz-review-list">
+        ${quizWrong.map(c=>`<div class="quiz-review-item">
+          <span class="quiz-review-word">${esc(c.front)}</span>
+          <span class="quiz-review-meaning">${esc(c.back)}</span>
+        </div>`).join('')}
+      </div>`:'<div class="quiz-review-perfect">✨ 全部答對！</div>';
+    container.innerHTML=`<div class="quiz-wrap">
+      <div class="quiz-score-banner">
+        <div style="flex:1">
+          <div class="quiz-score-text">測驗完成！</div>
+          <div class="quiz-score-sub">答對 ${quizScore} / ${quizCards.length} 題</div>
+          <div class="quiz-progress"><div class="quiz-progress-fill" id="qpf" style="width:0%"></div></div>
+        </div>
+        <div class="quiz-score-num">${pct}%</div>
+      </div>
+      ${wrongHtml}
+      <div style="display:flex;gap:8px;margin-top:12px;">
+        <button class="abtn" onclick="startQuiz(${quizTextId})">重新測驗</button>
+        ${quizWrong.length?`<button class="quiz-confirm-btn" onclick="retryWrong()">只練錯題</button>`:''}
+      </div>
+    </div>`;
+    setTimeout(()=>{const f=document.getElementById('qpf');if(f)f.style.width=pct+'%';},50);
+    return;
+  }
+  const c=quizCards[quizIdx];
+  const total=quizCards.length;
+  const progressPct=Math.round(quizIdx/total*100);
+  // highlight the word in source sentence
+  const sourceHtml=c.source?`<div class="quiz-source">${esc(c.source).replace(new RegExp('('+c.front.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','g'),'<span class="quiz-source-word">$1</span>')}</div>`:'';
+  container.innerHTML=`<div class="quiz-wrap">
+    <div class="quiz-top-bar">
+      <span class="quiz-counter">${quizIdx+1} / ${total}</span>
+      <span class="quiz-score-live">✓ ${quizScore}</span>
+    </div>
+    <div class="quiz-track"><div class="quiz-track-fill" id="qtrack" style="width:${progressPct}%"></div></div>
+    <div class="quiz-card" id="qcardNow">
+      <div class="quiz-q">「${esc(c.front)}」嘅意思係？</div>
+      ${sourceHtml}
+      <input class="quiz-inp" id="qiNow" placeholder="輸入答案…" onkeydown="if(event.key==='Enter')submitQuiz()"/>
+      <div class="quiz-btn-row">
+        <button class="quiz-confirm-btn" onclick="submitQuiz()">確認</button>
+        <button class="quiz-show-btn" id="qshow" onclick="showAnswer()">顯示答案</button>
+      </div>
+      <div class="quiz-ans" id="qaNow"></div>
+      <button class="quiz-next-btn" id="qnext" onclick="nextQuiz()" style="display:none">下一題 ›</button>
+    </div>
+  </div>`;
+  setTimeout(()=>{const i=document.getElementById('qiNow');if(i)i.focus();},50);
+}
+function submitQuiz(){
+  const inp=document.getElementById('qiNow');
+  const ans=document.getElementById('qaNow');
+  const card=document.getElementById('qcardNow');
+  const nxt=document.getElementById('qnext');
+  const showBtn=document.getElementById('qshow');
+  if(!inp||inp.disabled)return;
+  const val=inp.value.trim();
+  if(!val){toast('請輸入答案','er');return;}
+  const correct=quizCards[quizIdx].back;
+  const segments=correct.split(/[、，,；;\/／]+/).map(s=>s.trim()).filter(Boolean);
+  const isOk=segments.some(seg=>seg.includes(val)||val===seg||val.includes(seg)&&seg.length>1);
+  inp.disabled=true;
+  if(showBtn)showBtn.style.display='none';
+  inp.classList.add(isOk?'correct':'wrong');
+  ans.innerHTML=(isOk?'✅ 正確！':'❌ 答案：')+esc(correct);
+  ans.className='quiz-ans show '+(isOk?'correct':'wrong');
+  if(card){
+    card.classList.remove('shake','bounce');
+    void card.offsetWidth;
+    card.classList.add(isOk?'bounce':'shake');
+    card.classList.add(isOk?'card-correct':'card-wrong');
+  }
+  if(isOk){quizScore++;}else{quizWrong.push(quizCards[quizIdx]);}
+  if(nxt)nxt.style.display='block';
+  if(isOk)setTimeout(()=>nextQuiz(),900);
+}
+function showAnswer(){
+  const inp=document.getElementById('qiNow');
+  const ans=document.getElementById('qaNow');
+  const card=document.getElementById('qcardNow');
+  const nxt=document.getElementById('qnext');
+  const showBtn=document.getElementById('qshow');
+  if(!inp||inp.disabled)return;
+  const correct=quizCards[quizIdx].back;
+  inp.disabled=true;
+  inp.classList.add('wrong');
+  if(showBtn)showBtn.style.display='none';
+  ans.innerHTML='❌ 答案：'+esc(correct);
+  ans.className='quiz-ans show wrong';
+  if(card){
+    card.classList.remove('shake','bounce');
+    void card.offsetWidth;
+    card.classList.add('shake','card-wrong');
+  }
+  quizWrong.push(quizCards[quizIdx]);
+  if(nxt)nxt.style.display='block';
+}
+function retryWrong(){
+  quizCards=[...quizWrong];
+  quizCards.sort(()=>Math.random()-.5);
+  quizIdx=0;quizScore=0;quizDone=false;quizWrong=[];
+  const qc=document.getElementById('quizContainer');
+  if(qc)renderQuizInto(qc);
+}
+let quizAdvancing=false;
+function nextQuiz(){
+  if(quizAdvancing)return;
+  quizAdvancing=true;
+  quizIdx++;
+  const qc=document.getElementById('quizContainer');
+  if(!qc){quizAdvancing=false;return;}
+  if(quizIdx>=quizCards.length){quizDone=true;}
+  const card=document.getElementById('qcardNow');
+  if(card){
+    card.style.transition='opacity .18s,transform .18s';
+    card.style.opacity='0';card.style.transform='translateY(-10px)';
+    setTimeout(()=>{quizAdvancing=false;renderQuizInto(qc);},180);
+  } else {
+    quizAdvancing=false;
+    renderQuizInto(qc);
+  }
+}
+
+// ── DSE ANSWER BOX ──
+function getDseAnswers(textId){try{return JSON.parse(localStorage.getItem('dse_ans_'+textId)||'{}');}catch{return{};}}
+function saveDseAnswer(textId,idx,val){
+  const a=getDseAnswers(textId);a[idx]=val;
+  localStorage.setItem('dse_ans_'+textId,JSON.stringify(a));
+  const saved=document.getElementById('dsesaved'+idx);
+  if(saved){saved.style.display='block';setTimeout(()=>{saved.style.display='none';},1500);}
+}
+async function init(){
+  await loadStore();
+  renderHome();updateBC();updateBackBtn();
+}
+init();
+function enterSite(){
+  const splash=document.getElementById('splash');
+  const wrap=document.getElementById('mainWrap');
+  if(!splash||splash.classList.contains('out'))return;
+  sessionStorage.setItem('splashSeen','1');
+  splash.classList.add('out');
+  setTimeout(()=>{
+    splash.style.display='none';
+    if(wrap)wrap.classList.add('zoomed');
+  },1550);
+}
+// skip splash if already seen this session
+if(sessionStorage.getItem('splashSeen')){
+  const splash=document.getElementById('splash');
+  if(splash)splash.style.display='none';
+}
+</script>
+</body>
+</html>
